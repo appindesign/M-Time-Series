@@ -1,4 +1,4 @@
-/*
+/* 
 Purpose
 For the month containing a date d, return the nth occurence of a day-of-week in the month.
 Returns either the nth from the start or nth from the end of the month.
