@@ -1,4 +1,4 @@
-( monthName as text ) as text =>
+( monthName as text ) as text => 
 /*
 A month name may be too long for a column or row heading.
 The shortest replacement would be a single character.
