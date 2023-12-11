@@ -1,4 +1,4 @@
-let
+let 
 
     //Function definition
     divide = ( a as number, b as number ) as number => a / b,
