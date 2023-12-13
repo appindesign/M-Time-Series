@@ -37,7 +37,7 @@ let
     )
   ) as text
     meta [
-      Documentation.Name = "monthNameAsM",
+      Documentation.Name = "MonthNameAsM",
       Documentation.LongDescription
         = "A month name may be too long for a column or row heading.
           The shortest replacement would be a single character.
@@ -49,8 +49,8 @@ let
           It filters the table to the single row containing the month name.
           From this row it selects the abbreviation of the month.",
       Documentation.Examples = {
-        [Description = "Abbreviate April", Code = "monthAsM( ""August"" ) ", Result = "A"],
-        [Description = "Abbreviate August", Code = "monthAsM( ""August"" ) ", Result = "A (followed by an empty character)"]
+        [Description = "Abbreviate April", Code = "MonthAsM( ""August"" ) ", Result = "A"],
+        [Description = "Abbreviate August", Code = "MonthAsM( ""August"" ) ", Result = "A (followed by an empty character)"]
       }
     ]
 in
