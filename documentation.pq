@@ -1,4 +1,3 @@
-// Query1
 /* 
 Purpose
 For the month containing a date "d", return the nth occurence of a day-of-week in the month.
