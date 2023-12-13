@@ -31,6 +31,7 @@ let
         meta [
           Documentation.FieldCaption    = "monthName",
           Documentation.SampleValues    = {"August"},
+          Documentation.AllowedValues = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" },
           Documenation.FieldDescription = "Name of month"
         ]
     )
