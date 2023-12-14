@@ -1,8 +1,8 @@
 let
   fn = (
-    d as date,            //A date in the month.
-    n as number,                //Offset, in weeks, from the start (+ve) or end (-ve) of the week.
-    firstDayOfWeek as number   //0..6 with 0 being Sunday
+    d as date,
+    n as number,
+    firstDayOfWeek as number
   ) as date =>
     
     let
@@ -57,7 +57,7 @@ let
         "Find the start date of the nth week of the month.
         If n is positive, count weeks from the start of the month.
         Otherwise, count weeks from the end of the month.",
-    Documentation.Examples = {
+      Documentation.Examples = {
         [
           Description = "Find the 2nd Monday of the month", 
           Code        = "StartOfWeekN( #date(2023,12,25), 2, 1 ) ", 
