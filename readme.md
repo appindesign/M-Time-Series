@@ -9,7 +9,7 @@ The template contains the core set of documentation meta data. Other meta data, 
 ## MonthAsM
 Solve the problem of month names taking up too much space in a visual.
 
-The function converts a month name to a one letter abbreviation. One, or more empty, characters are added if a month shares its first character with another month.
+The function converts a month name to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
 
 ## StartOfWeekN
 Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
