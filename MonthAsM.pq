@@ -12,13 +12,9 @@ let
                     {"March", "M"},
                     {"April", "A"},
                     {"May", "M" & Text.Repeat(ec, 1)},
-                    //One empty character
                     {"June", "J" & Text.Repeat(ec, 1)},
-                    //One empty character
                     {"July", "J" & Text.Repeat(ec, 2)},
-                    //Two empty characters
                     {"August", "A" & Text.Repeat(ec, 1)},
-                    //One empty character
                     {"September", "S"},
                     {"October", "O"},
                     {"November", "N"},
