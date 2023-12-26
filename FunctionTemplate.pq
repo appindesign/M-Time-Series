@@ -1,5 +1,5 @@
 let
-    //Function definition
+    //📃Function definition
     fn = (a as number, b as number) as number => a / b,
     //Function type definition
     fnType = type function (
@@ -8,7 +8,7 @@ let
                 Documentation.FieldCaption = "a",
                 Documentation.FieldDescription = "Numerator",
                 Documentation.SampleValues = {10},
-                Documentation.AllowedValues = {},
+                //Documentation.AllowedValues = {},
                 Documentation.IsMultiline = false,
                 Documentation.IsCode = false
             ]
@@ -18,7 +18,7 @@ let
                 Documentation.FieldCaption = "b",
                 Documentation.FieldDescription = "Denominator",
                 Documentation.SampleValues = {4},
-                Documentation.AllowedValues = {},
+                //Documentation.AllowedValues = {},
                 Documentation.IsMultiline = false,
                 Documentation.IsCode = false
             ]
