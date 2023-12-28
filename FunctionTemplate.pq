@@ -1,5 +1,5 @@
 let
-    //📃Function definition
+    //Function definition
     fn = (a as number, b as number) as number => a / b,
     //Function type definition
     fnType = type function (
