@@ -1,11 +1,6 @@
 # A Library of Custom M Functions for Time Series
 This is a catalogue of custom M functions I built for working on time series data. Each entry begins with a description of the problem the function solves.
 
-## FunctionTemplate
-Solve the problem of creating a documented custom function.
-
-The template contains the core set of documentation meta data. Other meta data, such as allowed values, may be added. The template contains a simple example function to divide a by b. Reference [Adding Function Documentation](https://learn.microsoft.com/en-us/power-query/handling-documentation).
-
 ## MonthAsM
 Solve the problem of month names taking up too much space in a visual.
 
@@ -21,4 +16,7 @@ Solves the problem of high cardinality in columns of values. This is a common si
 
 The function takes a number and rounds it to your choice of significant figures. Where there is a tie between numbers to round to, a third parameter allows you to specify a rounding mode (as described in [Microsoft Learn, "RoundingMode.Type"](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
 
+## FunctionTemplate
+Solve the problem of creating a documented custom function.
 
+The template contains the core set of documentation meta data. Other meta data, such as allowed values, may be added. The template contains a simple example function to divide a by b. Reference [Adding Function Documentation](https://learn.microsoft.com/en-us/power-query/handling-documentation).
