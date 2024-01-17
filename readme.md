@@ -1,5 +1,5 @@
-Custom M Functions for Time Series
-This is the catalogue for a library custom M functions I built for working on time series data. Each catalogue entry begins with a description of the problem the function solves.
+# M Functions for Time Series
+This is the catalogue for my library custom M functions for time series data. Each catalogue entry begins with a description of the problem the function solves.
 
 ## MonthAsM
 Solve the problem of month names taking up too much space in a visual.
