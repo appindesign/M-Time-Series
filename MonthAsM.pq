@@ -21,8 +21,7 @@ let
                     {"December", "D"}
                 }
             ),
-            ttRows = Table.SelectRows(tt, each ([Name] = monthName)),
-            M = ttRows{0}[Abbreviation]
+            M = tt{List.PositionOf(tt[Name],monthName)}[Abbreviation]
         in
             M,
     //Function type definition
@@ -57,7 +56,7 @@ let
           I have used unicode character hex 200E, decimal 8206.
 
           The function creates a translation table.
-          It filters the table to the single row containing the month name.
+          It finds the row in the table containing the month name.
           From this row it selects the abbreviation of the month.",
         Documentation.Examples = {
             [
@@ -69,7 +68,17 @@ let
                 Description = "Abbreviate August",
                 Code = "MonthAsM( ""August"" ) ",
                 Result = "A (followed by an empty character)"
-            ]
+            ],
+            [
+                Description = "Abbreviate the entries in column ""Month Name""",
+                Code = "= Table.TransformColumns( #""Previous Step"", {{""Month Name"", each MonthNameAsM(_)}} )",
+                Result = "Month Name populated with abbreviated month  names."
+            ],
+            [
+                Description = "Add a column, M, abbreviating the entries in column ""Month Name""",
+                Code = "= Table.AddColumn( #""Previous Step"", ""M"", each MonthNameAsM(_[Month Name]), type text )",
+                Result = "A new column, M, with abbreviated month names."
+            ]                      
         }
     ]
 in
