@@ -61,12 +61,12 @@ let
         Documentation.Examples = {
             [
                 Description = "Abbreviate April",
-                Code = "MonthAsM( ""August"" ) ",
+                Code = "MonthNameAsM( ""August"" ) ",
                 Result = "A"
             ],
             [
                 Description = "Abbreviate August",
-                Code = "MonthAsM( ""August"" ) ",
+                Code = "MonthNameAsM( ""August"" ) ",
                 Result = "A (followed by an empty character)"
             ],
             [
