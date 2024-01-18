@@ -42,14 +42,14 @@ let
             ]
         )
     ) as number meta [
-        Documentation.Name = "DateTimeAlign",
+        Documentation.Name = "DateTimeRound",
         Documentation.LongDescription = "This function rounds a timestamp to a co-ordinate on the datetime dimension.
             The use-case is real-world data collection where the sensor timestamp often ""jitters"" around the datetime dimensions's co-ordinates.
             The timestamp can be rounded down, up or to the nearest co-ordinate on the datetime dimension.",
         Documentation.Examples = {
             [
                 Description = "Round #datetime(2020,4,1,3,47,26) down to the nearest 10 minutes",
-                Code = "DateTimeAlign(#(cr)#(tab)#datetime(2020,4,1,3,47,26), #(cr)#(tab)#datetime(2020,1,1,0,0,0), #(cr)#(tab)#duration(0,0,10,0), #(cr)#(tab)""Down""#(cr))",
+                Code = "DateTimeRound(#(cr)#(tab)#datetime(2020,4,1,3,47,26), #(cr)#(tab)#datetime(2020,1,1,0,0,0), #(cr)#(tab)#duration(0,0,10,0), #(cr)#(tab)""Down""#(cr))",
                 Result = "#datetime(2020,4,1,3,40,0)"
             ]
         }

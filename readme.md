@@ -1,12 +1,12 @@
 # M Functions for Time Series
 This is the catalogue for my library of custom M functions for time series. Each catalogue entry begins with a description of the problem the function solves.
 
-## DateTimeAlign
+## DateTimeRound
 Solve the problem of readings not being exactly at the datetime they're expected.
 
 In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading.
 
-DateTimeAlign aligns a timestamp to a co-ordinate on the datetime dimension, thereby restoring the ability to set up a relationship.
+DateTimeRound rounds a timestamp to a co-ordinate on the datetime dimension, thereby restoring the ability to set up a relationship.
 
 The function needs to be told the timestamp to round, the origin of the datetime dimension, the interval between co-ordinates on the dimension and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date or datetime.
 
