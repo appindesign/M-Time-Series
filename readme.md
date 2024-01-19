@@ -1,6 +1,17 @@
 # M Functions for Time Series
 This is the catalogue for my library of custom M functions for time series. Each catalogue entry begins with a description of the problem the function solves.
 
+## TimeDimension
+Solve the problem of creating a time dimension with an origin and interval of your choice.
+
+It is common to include a calendar table in data models and this is covered by many articles in books and online. When it comes to time series the idea of a calendar table needs extended to a datetime table.
+
+I wrote the following function to make it simple to create a datetime dimension. First, you tell it what type of dimension you want: date, time or datetime. Then you tell it the start of the dimension. Next, you tell it when to end. There are two ways of doing this: by giving the end of the dimension; or by giving the number of intervals to include in the dimension. Finally, you give the size of the interval.
+
+The function enables you to create the most awkward of dimensions, e.g. starting at 3 minutes and 34 seconds after 1am, with an interval of 7 minutes and 30 seconds and continuing for 132 intervals.
+
+The function creates a single column. You may enrich the column analogously to how you enrich a calendar table with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used. Or you may wish to add a text column with values “am” or “pm”.
+
 ## DateTimeRound
 Solve the problem of readings not being exactly at the datetime they're expected.
 
