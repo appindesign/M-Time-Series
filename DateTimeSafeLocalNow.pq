@@ -78,6 +78,11 @@ let
         ",
         Documentation.Examples = {
             [
+                Description = "Find the local datetime in New York",
+                Code = "LocalDateTime( ""America"", ""New_York"" )",
+                Result = "Returns the local datetime in New York"
+            ],
+            [
                 Description = "Find the local datetime in London",
                 Code = "LocalDateTime( ""America"", ""Argentina"", ""Buenos_Aires"" )",
                 Result = "Returns the local datetime in Buenos Aires"

@@ -1,6 +1,15 @@
 # M Functions for Time Series
 This is the catalogue for my library of custom M functions for time series. Each catalogue entry begins with a description of the problem the function solves.
 
+## DateTimeSafeLocalNow
+Solve the problem of LocalNow being different in the Power BI Service from on your Power BI Desktop.
+
+Consider you have a table of time-series data, collected in your timezone. You want to calculate the age of each reading and so you try a calculation,
+- Age = DateTime.LocalNow() - Readings[Datetime]
+All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age.
+
+The purpose of this function is to give a Local Now which is always in the same time zone.It reaches out to an api to do so.
+
 ## TimeDimension
 Solve the problem of creating a time dimension with an origin and interval of your choice.
 
