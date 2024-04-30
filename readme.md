@@ -1,6 +1,11 @@
 # M Functions for Time Series
 This is the catalogue for my library of custom time series M functions. Each catalogue entry begins with a description of the problem the function solves.
 
+## LinearInterpolation (under construction)
+Solve the problem of missing values in a time series by interpolating from neighbouring values.
+
+This is under construction - the bones of the code are here.
+
 ## DateTimeSafeLocalNow
 Solve the problem of LocalNow being different in the Power BI Service from on your Power BI Desktop.
 
