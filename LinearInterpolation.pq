@@ -6,13 +6,23 @@
         #"Filled Down" = Table.FillDown(#"Duplicated Column2", {"Fill Down"}),
         #"Filled Up" = Table.FillUp(#"Filled Down", {"Fill Up"}),
         #"Added Custom1" = Table.AddColumn(
-            #"Filled Up", "Interpolation", each if [xxx] <> null then [xxx] else 0.5 * ([Fill Down] + [Fill Up]),
+            #"Filled Up",
+            "Interpolation",
+            each
+                if [xxx] <> null then
+                    [xxx]
+                else
+                    List.Sum({[Fill Down], [Fill Up]}) / List.NonNullCount({[Fill Down], [Fill Up]}),
             type number
         ),
         Custom1 = Table.AddColumn(
             #"Added Custom1",
             "Interpolated Value",
-            each if [xxx] <> null then null else 0.5 * ([Fill Down] + [Fill Up]),
+            each
+                if [xxx] <> null then
+                    null
+                else
+                    List.Sum({[Fill Down], [Fill Up]}) / List.NonNullCount({[Fill Down], [Fill Up]}),
             type number
         ),
         #"Removed Columns1" = Table.RemoveColumns(Custom1, {col, "xxx", "Fill Down", "Fill Up"}),
