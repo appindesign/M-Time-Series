@@ -1,0 +1,49 @@
+let
+    //Function definition
+    fn = (tbl as table, colName as text, N as number) as table =>
+        let
+            col = Table.Column(tbl, colName),
+            #"Added Index" = Table.AddIndexColumn(tbl, "ndx", 0, 1, Int64.Type),
+            #"Added Smoothed Values" = Table.AddColumn(
+                #"Added Index",
+                "Smoothed " & colName,
+                each
+                    List.Median(
+                        List.Range(col, List.Max({0, [ndx] - N}), List.Min({List.Count(col) - [ndx] + N, 2 * N + 1}))
+                    ),
+                type number
+            ),
+            #"Removed Index" = Table.RemoveColumns(#"Added Smoothed Values", {"ndx"})
+        in
+            #"Removed Index",
+    //Function type definition
+    fnType = type function (
+        tbl as (
+            type table meta [
+                Documentation.FieldCaption = "The table containing the time series",
+                Documentation.SampleValues = {"Time Series Table"}
+            ]
+        ),
+        colName as (type text meta [
+            Documentation.FieldCaption = "The name of the column to be smoothed"
+        ]),
+        N as (type number meta [
+            Documentation.FieldCaption = "N"
+        ])
+    ) as table meta [
+        Documentation.Name = "SmoothOutliers",
+        Documentation.LongDescription = "
+            Adds a column of smoothed values to a time series, catering for outliers.
+            An approach to smoothing a time series is to calculate a moving average - but this has a weakness. 
+            Outliers may distort the average. 
+            An alternative is to calculate a moving median. 
+            That is the approach taken by this function.
+            For each point the function calculates the median of the point, the N points before the point and the N points after the point.
+            In general, to eliminate outliers, N should be chosen to be 1 + twice the length of the longest contiguous run of outliers.
+            For example, if the data series has isolated outliers, N = 3 will suffice. 
+            If you have runs of up to 4 outliers, N = 9 will remove the outliers.
+            N should be much smaller than the number of points in the series.
+        "
+    ]
+in
+    Value.ReplaceType(fn, fnType)
