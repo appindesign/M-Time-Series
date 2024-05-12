@@ -58,14 +58,12 @@ let
         The purpose of this function is to give a Local Now which is always in the same time zone.
         <p>
     Method<br>
-        The function reaches out to a 3rd party api.
+        The function reaches out to a 3rd party api, https://worldtimeapi.org/.
         Your ask the api for the time in a timezone of your choice.
         This would normally be the timezone of your readings.
         <p>
         The timezone is specified by area, location and region parameters.
-        Allowed values are documented at https://worldtimeapi.org/.
-        Entering https://worldtimeapi.org/api/timezone shows the allowed values.
-        Use a space for region if it is not needed.
+        Allowed values are documented at https://worldtimeapi.org/timezones.
         <p>
         The function calls the api and a record is returned.
         The record contains a field ""datetime"". 
