@@ -1,5 +1,5 @@
 # M Functions for Time Series
-This is the catalogue for my library of custom time series M functions. Each catalogue entry begins with a description of the problem the function solves.
+This is my library of M custom functions for time series data. Each function description describes the problem the function solves.
 
 ## SmoothWithOutliers
 Solve the problem of smoothing a time series which contains outliers.
