@@ -1,6 +1,11 @@
 # M Functions for Time Series
 This is the catalogue for my library of custom time series M functions. Each catalogue entry begins with a description of the problem the function solves.
 
+##SmoothWithOutliers
+Solve the problem of smoothing a time series which contains outliers.
+
+Supply this function with a table containing a time series and it will add a new column, smoothing the values of the time series. It smooths the values by calculating the median of neighbouring points. You may specify the number of neighbours to use.
+
 ## LinearInterpolation (under construction)
 Solve the problem of missing values in a time series by interpolating from neighbouring values.
 
