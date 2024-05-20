@@ -1,6 +1,14 @@
 # M Functions for Time Series
 This is my library of M custom functions for time series data. Each function description describes the problem the function solves.
 
+##Integrate
+Solve the problem of integration.
+
+Supply this function with a table containing a domain and a range and it will add a new column, integrating the range from the origin of the domain to the point on the domain, doing so for each point.
+
+<img width="296" alt="Screenshot 2024-05-20 182249" src="https://github.com/appindesign/M-Time-Series/assets/42817224/9c4ef84d-a906-4ad5-aa57-4bad8672a365">
+
+
 ## SmoothWithOutliers
 Solve the problem of smoothing a time series which contains outliers.
 
