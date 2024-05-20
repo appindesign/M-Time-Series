@@ -1,7 +1,7 @@
 # M Functions for Time Series
 This is my library of M custom functions for time series data. Each function description describes the problem the function solves.
 
-##Integrate
+## Integrate
 Solve the problem of integration.
 
 Supply this function with a table containing a domain and a range and it will add a new column, integrating the range from the origin of the domain to the point on the domain, doing so for each point.
