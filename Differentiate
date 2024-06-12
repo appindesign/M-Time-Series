@@ -1,0 +1,15 @@
+(tbl as table, domain as text, range as text) as table =>
+    let
+        tblBuffered = Table.Buffer(tbl),
+        x = List.Buffer( Table.Column(tblBuffered, domain) ),
+        y = List.Buffer( Table.Column(tblBuffered, range) ),
+        i = List.Numbers( 0, List.Count(x)-1 ),
+
+        xf = List.Transform(i, each if _ > 0 then (y{_} - y{_ - 1}) / (x{_} - x{_ - 1}) else null),
+
+        headers = Table.ColumnNames(tblBuffered) & {"f'x"},
+        cols = Table.ToColumns(tblBuffered) & {xf},
+        result = Table.FromColumns(cols, headers),
+        #"Changed Type" = Table.TransformColumnTypes(result,{{"f'x", type number}})
+    in
+        #"Changed Type"
