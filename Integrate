@@ -5,24 +5,26 @@ let
         tblBuffered = Table.Buffer(tbl),
         x = List.Buffer( Table.Column(tblBuffered, domain) ),
         y = List.Buffer( Table.Column(tblBuffered, range) ),
-        i = List.Buffer( List.Positions( x ) ),
+        i = List.Numbers( 0, List.Count(x)-1 ),
 
         //Calculate a list, with each entry the area of the trapezoid for each x.
         //"Number.From" caters for the range being time, date or datetime.
-        trapezoidArea = List.Buffer( List.Transform( i, each 
+        yΔx = List.Buffer( List.Transform( i, each 
             if _ > 0 
             then 0.5*( y{_} + y{_-1} ) * Number.From( x{_} - x{_-1} )
             else 0
-        ) ),
+        ) ),        
 
-        //Create a list containing the sum of the trapezoid areas to each x.
-        #"Σ areas" = List.Accumulate( trapezoidArea, {}, (state, current)=> state & {if List.Last(state)<>null then List.Last(state) + current else current} ),
+        ΣyΔx = List.Generate( ()=> [rt = yΔx{0}, index = 0],
+            each [index] < List.Count(yΔx),
+            each [rt = List.Sum( {[rt], yΔx{[index]+1}} ), index = [index]+1 ],
+            each [rt] ),
 
         //Add the integrated values as a new column.
-        headers = Table.ColumnNames(tblBuffered) & {"Σ " & range},
-        columns = Table.ToColumns(tblBuffered) & {#"Σ areas"}, 
+        headers = Table.ColumnNames(tblBuffered) & {"Σ" & range},
+        columns = Table.ToColumns(tblBuffered) & {ΣyΔx}, 
         result = Table.FromColumns( columns, headers ),
-        changeType = Table.TransformColumnTypes(result,{{"Σ " & range, type number}})
+        changeType = Table.TransformColumnTypes(result,{{"Σ" & range, type number}})
     in
         changeType,
 
