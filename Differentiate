@@ -2,10 +2,18 @@
     let
         tblBuffered = Table.Buffer(tbl),
         x = List.Buffer( Table.Column(tblBuffered, domain) ),
-        y = List.Buffer( Table.Column(tblBuffered, range) ),
-        i = List.Numbers( 0, List.Count(x)-1 ),
+        fx = List.Buffer( Table.Column(tblBuffered, range) ),
 
-        xf = List.Transform(i, each if _ > 0 then (y{_} - y{_ - 1}) / (x{_} - x{_ - 1}) else null),
+        xf = List.Generate(
+            () => [d=null,index=0],
+            each [index] < List.Count(x),
+            each
+                [
+                    d = (fx{[index]+1}-fx{[index]})/(x{[index]+1}-x{[index]}),
+                    index = [index] + 1
+                ],
+            each [d]
+        ),
 
         headers = Table.ColumnNames(tblBuffered) & {"f'x"},
         cols = Table.ToColumns(tblBuffered) & {xf},
