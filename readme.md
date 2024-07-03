@@ -52,10 +52,10 @@ DateTimeRound rounds a timestamp to a co-ordinate on the datetime dimension, the
 
 The function needs to be told the timestamp to round, the origin of the datetime dimension, the interval between co-ordinates on the dimension and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date or datetime.
 
-## MonthAsM
-Solve the problem of month names taking up too much space in a visual.
+## MonthLetter
+Solves the problem of month names taking up too much space in a visual.
 
-The function converts a month name to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
+The function converts a date to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
 
 ## StartOfWeekNOfMonth
 Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
