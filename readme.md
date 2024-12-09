@@ -13,7 +13,6 @@ Supply this function with a table containing a domain and a range and it will ad
 
 <img width="296" alt="Screenshot 2024-05-20 182249" src="https://github.com/appindesign/M-Time-Series/assets/42817224/9c4ef84d-a906-4ad5-aa57-4bad8672a365">
 
-
 ## SmoothWithOutliers
 Solve the problem of smoothing a time series which contains outliers.
 
@@ -43,12 +42,9 @@ The function parameters define the interval of the dimension and the range. The 
 
 This function enables you to create the most awkward of datetime dimensions, e.g. starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing for 132 intervals. You may enrich the column as you wish e.g. with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used (or you add a more complex column, such as the nearest fifteen minutes by using the temporal rounding function in this library). Or you may wish to add a text column with values “am” or “pm”.
 
-## DateTimeRound
-Solve the problem of readings not being exactly at the datetime they're expected.
-
-In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading.
-
-DateTimeRound rounds a timestamp to a co-ordinate on the datetime dimension, thereby restoring the ability to set up a relationship.
+## fnTemporalRounding
+1. Solve the problem of readings not being exactly at the datetime they're expected. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension, thereby restoring the ability to set up a relationship.
+2. Solve the problem of enriching a temporal dimension by assigning each timestamp to a group (e.g. each fifteen minute interval). While functions like Time.StartOfHour exist there is no function like Time.StartOfFifteenMinutePeriod - this function is a general purpose Time.StartOf.
 
 The function needs to be told the timestamp to round, the origin of the datetime dimension, the interval between co-ordinates on the dimension and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date or datetime.
 
