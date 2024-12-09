@@ -34,14 +34,14 @@ Consider you have a table of time-series data, collected in your timezone. You w
 
 All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
 
-## TimeDimension
-Solve the problem of creating a time dimension with an origin and interval of your choice.
+## fnTemporalDimension
+Solve the problem of creating a temporal dimension.
 
-This function enables you to create the most awkward of datetime dimensions, e.g. starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing for 132 intervals.
+The dimension may be of type time, date or datetime. The function infers the type from the type of the start timestamp you give it. It returns a single column table, with column heading "Time", "Date" or "Datetime" according to the type of dimension.
 
-First, you tell the function which type of dimension you want: date, time or datetime. Then you tell it the start of the dimension. Next, you tell it when to end. There are two ways of telling it when to end: by giving the end of the dimension; or by giving the number of intervals to include in the dimension. Finally, you give the size of the interval.
+The function parameters define the interval of the dimension and the range. The range may be specfiied by a start timestamp and a count of intervals (analogous to what List.DateTimes does) or alternatively by a start timestamp and an end timestamp (which List.DateTimes does not provide for).
 
-The function creates a single column. You may enrich the column analogously to how you enrich a calendar table with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used (or you add a more complex column such as the nearest fifteen minutes by using the DateTimeRound function, in this library). Or you may wish to add a text column with values “am” or “pm”.
+This function enables you to create the most awkward of datetime dimensions, e.g. starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing for 132 intervals. You may enrich the column as you wish e.g. with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used (or you add a more complex column, such as the nearest fifteen minutes by using the temporal rounding function in this library). Or you may wish to add a text column with values “am” or “pm”.
 
 ## DateTimeRound
 Solve the problem of readings not being exactly at the datetime they're expected.
