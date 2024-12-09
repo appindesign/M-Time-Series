@@ -37,11 +37,11 @@ All works well. Then you publish to the Power BI Service, in a different timezon
 ## fnTemporalDimension
 Solve the problem of creating a temporal dimension.
 
-The dimension may be of type time, date or datetime. The function infers which type of dimension you want from the type of the start timestamp you give it. It returns a single column table, with column heading "Time", "Date" or "Datetime" according to the type of dimension.
+The dimension may be of type time, date or datetime. The function infers the type from the type of the start timestamp you give it. It returns a single column table, with column heading "Time", "Date" or "Datetime" according to the type of dimension.
 
 The function parameters define the interval of the dimension and the range. The range may be specfiied by a start timestamp and a count of intervals (analogous to what List.DateTimes does) or alternatively by a start timestamp and an end timestamp (which List.DateTimes does not provide for).
 
-This function enables you to create the most awkward of datetime dimensions, e.g. starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing for 132 intervals. The function creates a single column called. You may enrich the column analogously to how you enrich a calendar table with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used (or you add a more complex column such as the nearest fifteen minutes by using the DateTimeRound function, in this library). Or you may wish to add a text column with values “am” or “pm”.
+This function enables you to create the most awkward of datetime dimensions, e.g. starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing for 132 intervals. You may enrich the column as you wish e.g. with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used (or you add a more complex column, such as the nearest fifteen minutes by using the temporal rounding function in this library). Or you may wish to add a text column with values “am” or “pm”.
 
 ## DateTimeRound
 Solve the problem of readings not being exactly at the datetime they're expected.
