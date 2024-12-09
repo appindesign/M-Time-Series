@@ -1,0 +1,23 @@
+(tbl as table, domain as text, range as text) as table =>
+    let
+        tblBuffered = Table.Buffer(tbl),
+        x = List.Buffer( Table.Column(tblBuffered, domain) ),
+        fx = List.Buffer( Table.Column(tblBuffered, range) ),
+
+        xf = List.Generate(
+            () => [d=null,index=0],
+            each [index] < List.Count(x),
+            each
+                [
+                    d = (fx{[index]+1}-fx{[index]})/(x{[index]+1}-x{[index]}),
+                    index = [index] + 1
+                ],
+            each [d]
+        ),
+
+        headers = Table.ColumnNames(tblBuffered) & {"f'x"},
+        cols = Table.ToColumns(tblBuffered) & {xf},
+        result = Table.FromColumns(cols, headers),
+        #"Changed Type" = Table.TransformColumnTypes(result,{{"f'x", type number}})
+    in
+        #"Changed Type"

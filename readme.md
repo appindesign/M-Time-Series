@@ -1,10 +1,25 @@
 # M Functions for Time Series
-This is the catalogue for my library of custom time series M functions. Each catalogue entry begins with a description of the problem the function solves.
+This is my library of M custom functions for time series data. Each function description describes the problem the function solves.
 
-##SmoothWithOutliers
+## Differentiate (under construction but working)
+Solve the problem of differentiation.
+
+Supply this function with a table containing a domain and a range and it will add a new column, differenting the range with respect to the domain.
+
+## Integrate (under construction but working)
+Solve the problem of integration.
+
+Supply this function with a table containing a domain and a range and it will add a new column, integrating the range from the origin of the domain to the point on the domain, doing so for each point.
+
+<img width="296" alt="Screenshot 2024-05-20 182249" src="https://github.com/appindesign/M-Time-Series/assets/42817224/9c4ef84d-a906-4ad5-aa57-4bad8672a365">
+
+
+## SmoothWithOutliers
 Solve the problem of smoothing a time series which contains outliers.
 
 Supply this function with a table containing a time series and it will add a new column, smoothing the values of the time series. It smooths the values by calculating the median of neighbouring points. You may specify the number of neighbours to use.
+
+![smoothing](https://github.com/appindesign/M-Time-Series/assets/42817224/b3b11705-8133-46f2-8ceb-989916752b83)
 
 ## LinearInterpolation (under construction)
 Solve the problem of missing values in a time series by interpolating from neighbouring values.
@@ -37,10 +52,10 @@ DateTimeRound rounds a timestamp to a co-ordinate on the datetime dimension, the
 
 The function needs to be told the timestamp to round, the origin of the datetime dimension, the interval between co-ordinates on the dimension and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date or datetime.
 
-## MonthAsM
-Solve the problem of month names taking up too much space in a visual.
+## MonthLetter
+Solves the problem of month names taking up too much space in a visual.
 
-The function converts a month name to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
+The function converts a date to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
 
 ## StartOfWeekNOfMonth
 Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
