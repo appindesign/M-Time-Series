@@ -42,7 +42,7 @@ let
             ]
         )
     ) as number meta [
-        Documentation.Name = "fnTemporalRounding",
+        Documentation.Name = "fnRoundTimestamp",
         Documentation.LongDescription = "This function rounds a timestamp to a co-ordinate on the datetime dimension.
             The use-case is real-world data collection where the sensor timestamp often ""jitters"" around the datetime dimensions's co-ordinates.
             The timestamp can be rounded down, up or to the nearest co-ordinate on the datetime dimension.",
