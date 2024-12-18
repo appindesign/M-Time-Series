@@ -7,7 +7,7 @@ let
             //Acknowledgement for the idea of next line to fnType2Text at https://stackoverflow.com/questions/73946747/powerquery-how-to-convert-cast-type-type-to-type-text
             columnTitle = Text.Proper(Table.Schema(#table(type table [col = startType], {}))[Kind]{0}),
             count = if (endType = Number.Type) then end else 1 + Number.RoundDown((end - start) / interval),
-            lst = List.DateTimes(DateTime.From(start), count, interval),
+            lst = List.DateTimeZones(DateTimeZone.From(start), count, interval),
             tbl = Table.FromList(lst, Splitter.SplitByNothing(), type table [Timestamp = startType]),
             typedTbl = Table.TransformColumnTypes(tbl, {{"Timestamp", startType}}),
             titledTbl = Table.RenameColumns(typedTbl, {{"Timestamp", columnTitle}})
@@ -38,7 +38,7 @@ let
         )
     ) as table meta [
         Documentation.Name = "fnTemporalDimension",
-        Documentation.LongDescription = "Create a temporal dimension. The dimension will inherit the type of the ""start"" parameter. ""Start"" must be of type <code>time, date or datetime</code>.",
+        Documentation.LongDescription = "Create a temporal dimension. The dimension will inherit the type of the ""start"" parameter. ""Start"" must be of type <code>time, date, datetime or datetimezone</code>.",
         Documentation.Examples = {
             [
                 Description = "Create a datetime dimension starting at 6:15am on 1st Jan 2000, ending at 6:45am on 1st Jan 2000, with
