@@ -37,13 +37,12 @@ let
             ]
         )
     ) as table meta [
-        Documentation.Name = "fnTemporalDimension",
-        Documentation.LongDescription = "Create a temporal dimension. The dimension will inherit the type of the ""start"" parameter. ""Start"" must be of type <code>time, date, datetime or datetimezone</code>.",
+        Documentation.Name = "fnTimeline",
+        Documentation.LongDescription = "Create a temporal dimension. The dimension will inherit the type of the ""start"" parameter. ""Start"" must be of type <code>time, date or datetime</code>.",
         Documentation.Examples = {
             [
-                Description = "Create a datetime dimension starting at 6:15am on 1st Jan 2000, ending at 6:45am on 1st Jan 2000, with
-co-ordinate intervals of 15 minutes.",
-                Code = "fnTemporalDimension(#(cr) #datetime(2000,1,1,6,15,0), #(cr) #datetime(2000,1,1,6,45,0), #(cr) #duration(0,0,15,0) #(cr))",
+                Description = "Create a datetime dimension starting at 6:15am on 1st Jan 2000, ending at 6:45am on 1st Jan 2000, with co-ordinate intervals of 15 minutes.",
+                Code = "fnTimeline(#(cr) #datetime(2000,1,1,6,15,0), #(cr) #datetime(2000,1,1,6,45,0), #(cr) #duration(0,0,15,0) #(cr))",
                 Result = "Datetime #(cr)1/1/2000 06:15 #(cr)1/1/2000 06:30 #(cr)1/1/2000 06:45"
             ]
         }
