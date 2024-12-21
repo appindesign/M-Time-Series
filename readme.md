@@ -38,9 +38,9 @@ Solve the problem of creating a timeline.
 
 With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March.
 
-The function needs to be told the start of the timeline, the interval between co-ordinates and the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include (this is a generalisation of the List.Datetimes function which only supports giving a number). 
+*Parameters* The function needs to be told the start of the timeline, the interval between co-ordinates and the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.Datetimes) - they only support giving a number.
 
-The function returns a single-column table, its type is infered from the type of the start co-ordinate.
+*Return Type* The function returns a single-column table, its type is infered from the type of the start co-ordinate.
 
 You may enrich the column with functions such as Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to add a more complex column - such as allocating a each co-ordinate to a fifteen minute timeslot.
 
