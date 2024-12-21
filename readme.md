@@ -42,7 +42,7 @@ The function needs to be told the start of the timeline, the interval between co
 
 The function returns a single-column table, its type is infered from the type of the start co-ordinate.
 
-You may enrich the column as you wish e.g. with day name or month number. Functions such as Time.Hour or Time.StartOfHour may be used. fnRoundTimestamp in this library may be used to add a more complex column - such as the nearest fifteen minutes.
+You may enrich the column with functions such as Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to add a more complex column - such as allocating a each co-ordinate to a fifteen minute timeslot.
 
 ## fnRoundTimestamp
 1. Solve the problem of readings not being exactly at the datetime they're expected. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension, thereby restoring the ability to set up a relationship.
