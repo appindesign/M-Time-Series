@@ -46,7 +46,7 @@ You may enrich the column with functions such as Time.Hour or Time.StartOfHour. 
 
 ## fnRoundTimestamp
 *Problem Solved*
-1. Solve the problem of readings not being exactly at the datetime they're expected. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension, thereby restoring the ability to set up a relationship.
+1. Solve the problem of readings not being exactly at the datetime they're expected. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension. It thereby restores the ability to set up a relationship.
 2. Solve the problem of enriching a temporal dimension by assigning each timestamp to a group (e.g. each fifteen minute interval). While functions like Time.StartOfHour exist there is no function like Time.StartOfFifteenMinutePeriod - this function is a general purpose Time.StartOf.
 
 *Parameters* The function needs to be told the origin of the datetime dimension, the interval between co-ordinates on the dimension, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
