@@ -41,7 +41,7 @@ With this function you can easily create the most awkward of timelines. For exam
 *Parameters* 
 - `start` The function needs to be told the start of the timeline. The type of  start determines the type of the timeline. The type may be time, date, datetime or datetimezone.
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
-- `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.Datetimes) - they only support giving a number.
+- `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
 *Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. You may enrich the column with functions such as DateTime.Date, Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to allocate a each co-ordinate to a group of co-ordinate e.g. fifteen minute timeslots.
 
