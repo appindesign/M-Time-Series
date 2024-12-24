@@ -34,9 +34,7 @@ Consider you have a table of time-series data, collected in your timezone. You w
 All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
 
 ## fnTimeline
-*Problem to be Solved*
-
-Solves the problem of creating a timeline of arbitrary interval, start and duration.
+*Problem to be Solved* Solves the problem of creating a timeline of arbitrary interval, start and duration.
 
 With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March.
 
