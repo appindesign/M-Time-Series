@@ -34,20 +34,21 @@ Consider you have a table of time-series data, collected in your timezone. You w
 All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
 
 ## fnTimeline
-*Problem to be Solved* Solves the problem of creating a timeline of arbitrary interval, start and duration.
+*Purpose* Solves the problem of creating a timeline of arbitrary interval, start and duration.
 
 With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March.
 
-*Parameters* The function needs to be told the start of the timeline, the interval between co-ordinates and the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.Datetimes) - they only support giving a number.
+*Parameters* 
+- `start` The function needs to be told the start of the timeline. The type of  start determines the type of the timeline. The type may be time, date, datetime or datetimezone.
+- `interval` The function needs to be told the duration of the interval between co-ordinates. 
+- `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.Datetimes) - they only support giving a number.
 
-*Return Type* The function returns a single-column table, its type is infered from the type of the start co-ordinate.
-
-You may enrich the column with functions such as Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to add a more complex column - such as allocating a each co-ordinate to a fifteen minute timeslot.
+*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. You may enrich the column with functions such as DateTime.Date, Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to allocate a each co-ordinate to a group of co-ordinate e.g. fifteen minute timeslots.
 
 ## fnRoundTimestamp
-*Problem to be Solved*
-1. Solves the problem of readings not being exactly at the datetime they're expected. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension. It thereby restores the ability to set up a relationship.
-2. Solves the problem of enriching a temporal dimension by assigning each timestamp to a group (e.g. each fifteen minute interval). While functions like Time.StartOfHour exist there is no function like Time.StartOfFifteenMinutePeriod - this function is a general purpose Time.StartOf.
+*Purpose*
+1. Solves the problem of readings not being exactly at the co-ordinate on the timelines they're expected to be. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension. It thereby restores the ability to set up a relationship.
+2. Solves the problem of enriching a timeline by assigning each timestamp to a group (e.g. each fifteen minute interval). While functions like Time.StartOfHour exist there is no function like Time.StartOfFifteenMinutePeriod - this function is a general purpose Time.StartOf.
 
 *Parameters* The function needs to be told the origin of the datetime dimension, the interval between co-ordinates on the dimension, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
 
