@@ -52,7 +52,7 @@ After creating the table you may enrich it, adding columns using functions such 
 1. Mitigates the problem of timestamps not being exactly at co-ordinates on the timeline.
 2. Solves the problem of assigning a timestamp to a time interval, generalising functions such Time.StartOfHour.
 
-In the real world readings often fall either side of a co-ordinate on the timeline<sup>1</sup>. This function rounds a timestamp to a co-ordinate. Without this you could not create a relationship between the co-ordinates on the timeline and the timestamps of the readings. 
+In the real world readings often fall either side of a co-ordinate on the timeline<sup>1</sup>. This function rounds a timestamp to a co-ordinate. Without doing this you could not create a relationship between the co-ordinates on the timeline and the timestamps of the readings. 
 
 Another use is to allocate a timestamp to a time interval - some such functions already exist (e.g. Time.StartOfHour allocates a timestamp to an hour). This function generalises the existing functions. For example you may wish to allocate a timestamp to the start of a fifteen minute period.
 
