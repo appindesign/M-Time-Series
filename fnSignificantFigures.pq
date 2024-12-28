@@ -74,7 +74,7 @@ let
             ]
         )
     ) as number meta [
-        Documentation.Name = "SignificantFigures",
+        Documentation.Name = "fnSignificantFigures",
         Documentation.LongDescription = "Round a number to a number of significant figures. ""roundingMode"" is optional with default of RoundingMode.ToEven. For the allowed values of rounding mode refer to Power Query Learn, under ""RoundingMode.Type"".",
         Documentation.Examples = {
             [
