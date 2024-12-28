@@ -43,7 +43,7 @@ With this function you can easily create the most awkward of timelines. For exam
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
 - `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
-*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. 
+*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. The type of the column is the type of the start parameter.
 
 After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these, fnRoundTimestamp, from this library.
 
@@ -75,7 +75,11 @@ Solve the problem of returning a number indicating which week of the month a dat
 
 A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
 
-## SignificantFigures
-Solves the problem of high cardinality in columns of values. This is a common situation in time series data such as sensor readings. High cardinality compromises performance because the data model will be big and DAX calculations will be slower.
+## fnSignificantFigures
+*Purpose*
+Solves the problem of high cardinality in a columns of values.
 
-The function takes a number and rounds it to your choice of significant figures. Where there is a tie between numbers to round to, a third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings. Rounding reduces cardinality.
+
+*Parameters*
+The function needs to be told the number to round and the number of significant figures to round to. A third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
