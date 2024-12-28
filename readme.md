@@ -36,21 +36,29 @@ All works well. Then you publish to the Power BI Service, in a different timezon
 ## fnTimeline
 *Purpose* Solves the problem of creating a timeline of arbitrary interval, start and duration.
 
-With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March.
+With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March. The function generalises existing functions such as List.DateTimes.
 
 *Parameters* 
 - `start` The function needs to be told the start of the timeline. The type of  start determines the type of the timeline. The type may be time, date, datetime or datetimezone.
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
 - `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
-*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. You may enrich the column with functions such as DateTime.Date, Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to allocate a each co-ordinate to a group of co-ordinate e.g. fifteen minute timeslots.
+*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. 
+
+After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these, fnRoundTimestamp, from this library.
 
 ## fnRoundTimestamp
 *Purpose*
-1. Solves the problem of readings not being exactly at the co-ordinate on the timelines they're expected to be. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension. It thereby restores the ability to set up a relationship.
-2. Solves the problem of enriching a timeline by assigning each timestamp to a group (e.g. each fifteen minute interval). While functions like Time.StartOfHour exist there is no function like Time.StartOfFifteenMinutePeriod - this function is a general purpose Time.StartOf.
+1. Mitigates the problem of timestamps not being exactly at co-ordinates on the timeline.
+2. Solves the problem of assigning a timestamp to a time interval, generalising functions such Time.StartOfHour.
 
-*Parameters* The function needs to be told the origin of the datetime dimension, the interval between co-ordinates on the dimension, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
+In the real world readings often fall either side of a co-ordinate on the timeline<sup>1</sup>. This function rounds a timestamp to a co-ordinate. Without this you could not create a relationship between the co-ordinates on the timeline and the timestamps of the readings. 
+
+Another use is to allocate a timestamp to a time interval - some such functions already exist (e.g. Time.StartOfHour allocates a timestamp to an hour). This function generalises the existing functions. For example you may wish to allocate a timestamp to the start of a fifteen minute period.
+
+<sup>1</sup>This may be due to a fixed difference in reading time between the sensor and co-ordinates on the timeline, or random "jitter" or "drift" in reading times, or a combination of all of these.
+
+*Parameters* The function needs to be told the origin of the timeline, the interval between co-ordinates on the timeline, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
 
 ## MonthLetter
 Solves the problem of month names taking up too much space in a visual.
