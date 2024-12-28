@@ -19,14 +19,14 @@ let
             type any meta [
                 Documentation.FieldCaption = "start",
                 Documentation.SampleValues = {"1/1/2000 00:06:15"},
-                Documentation.FieldDescription = "The first co-ordinate in the dimension."
+                Documentation.FieldDescription = "The first co-ordinate on the timeline."
             ]
         ),
         end as (
             type any meta [
                 Documentation.FieldCaption = "end",
                 Documentation.SampleValues = {"1/1/2000 00:06:45", "30"},
-                Documentation.FieldDescription = "The last co-ordinate in the dimension or the number of co-ordinates"
+                Documentation.FieldDescription = "The last co-ordinate on the timeline or the number of co-ordinates"
             ]
         ),
         interval as (
@@ -38,7 +38,7 @@ let
         )
     ) as table meta [
         Documentation.Name = "fnTimeline",
-        Documentation.LongDescription = "Create a temporal dimension. The dimension will inherit the type of the ""start"" parameter. ""Start"" must be of type <code>time, date or datetime</code>.",
+        Documentation.LongDescription = "Create a timeline. The dimension will inherit the type of the ""start"" parameter. ""Start"" must be of type <code>time, date or datetime</code>.",
         Documentation.Examples = {
             [
                 Description = "Create a datetime dimension starting at 6:15am on 1st Jan 2000, ending at 6:45am on 1st Jan 2000, with co-ordinate intervals of 15 minutes.",
