@@ -45,7 +45,7 @@ With this function you can easily create the most awkward of timelines. For exam
 
 *Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. The type of the column is the type of the start parameter.
 
-After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these, fnRoundTimestamp, from this library.
+After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these from this library - fnRoundTimestamp.
 
 ## fnRoundTimestamp
 *Purpose*
