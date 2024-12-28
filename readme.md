@@ -26,7 +26,7 @@ Solve the problem of missing values in a time series by interpolating from neigh
 This is under construction - the bones of the code are here.
 
 ## DateTimeSafeLocalNow
-Solve the problem of LocalNow being different in the Power BI Service from on your Power BI Desktop.
+Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
 
 Consider you have a table of time-series data, collected in your timezone. You want to calculate the age of each reading and so you try a calculation,
 - Age = DateTime.LocalNow() - Readings[Datetime]
@@ -80,6 +80,8 @@ A date falling in the month but before the first full week is numbered as if it 
 Solves the problem of high cardinality in a columns of values.
 
 High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings. Rounding reduces cardinality.
+
+I have seen examples of readings recorded to 6 figures when only 3 are of significance. Rounding to 3 significant figures would reduce cardinality to a maximum of 1,000 from a maximum of 1,000,000.
 
 *Parameters*
 The function needs to be told the number to round and the number of significant figures to round to. A third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
