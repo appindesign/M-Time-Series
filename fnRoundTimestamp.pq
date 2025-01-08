@@ -16,21 +16,21 @@ let
             type any meta [
                 Documentation.FieldCaption = "timestamp",
                 Documentation.SampleValues = {#datetime(2020, 4, 1, 3, 47, 45)},
-                Documentation.FieldDescription = "The timestamp to be rounded as time, date or datetime."
+                Documentation.FieldDescription = "The timestamp to be rounded as time, date, datetime or datetimezone."
             ]
         ),
         origin as (
             type any meta [
                 Documentation.FieldCaption = "origin",
                 Documentation.SampleValues = {#datetime(2000, 1, 1, 0, 0, 0)},
-                Documentation.FieldDescription = "The origin of the datetime dimension as time, date or datetime."
+                Documentation.FieldDescription = "The origin of the timeline as time, datetime or datetimezone."
             ]
         ),
         interval as (
             type duration meta [
                 Documentation.FieldCaption = "interval",
                 Documentation.SampleValues = {#duration(0, 0, 15, 0)},
-                Documentation.FieldDescription = "The interval between co-ordinates on the datetime dimension."
+                Documentation.FieldDescription = "The interval between co-ordinates on the timeline."
             ]
         ),
         rounding as (
@@ -43,9 +43,9 @@ let
         )
     ) as number meta [
         Documentation.Name = "fnRoundTimestamp",
-        Documentation.LongDescription = "This function rounds a timestamp to a co-ordinate on the datetime dimension.
+        Documentation.LongDescription = "This function rounds a timestamp to a co-ordinate on the timeline.
             The use-case is real-world data collection where the sensor timestamp often ""jitters"" around the datetime dimensions's co-ordinates.
-            The timestamp can be rounded down, up or to the nearest co-ordinate on the datetime dimension.",
+            The timestamp can be rounded down, up or to the nearest co-ordinate on the timeline.",
         Documentation.Examples = {
             [
                 Description = "Round #datetime(2020,4,1,3,47,26) down to the nearest 10 minutes",

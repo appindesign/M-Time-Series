@@ -26,7 +26,7 @@ Solve the problem of missing values in a time series by interpolating from neigh
 This is under construction - the bones of the code are here.
 
 ## DateTimeSafeLocalNow
-Solve the problem of LocalNow being different in the Power BI Service from on your Power BI Desktop.
+Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
 
 Consider you have a table of time-series data, collected in your timezone. You want to calculate the age of each reading and so you try a calculation,
 - Age = DateTime.LocalNow() - Readings[Datetime]
@@ -34,22 +34,31 @@ Consider you have a table of time-series data, collected in your timezone. You w
 All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
 
 ## fnTimeline
-*Problem to be Solved* Solves the problem of creating a timeline of arbitrary interval, start and duration.
+*Purpose* Solves the problem of creating a timeline of arbitrary interval, start and duration.
 
-With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March.
+With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March. The function generalises existing functions such as List.DateTimes.
 
-*Parameters* The function needs to be told the start of the timeline, the interval between co-ordinates and the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.Datetimes) - they only support giving a number.
+*Parameters* 
+- `start` The function needs to be told the start of the timeline. The type of  start determines the type of the timeline. The type may be time, date, datetime or datetimezone.
+- `interval` The function needs to be told the duration of the interval between co-ordinates. 
+- `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
-*Return Type* The function returns a single-column table, its type is infered from the type of the start co-ordinate.
+*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. The type of the column is the type of the start parameter.
 
-You may enrich the column with functions such as Time.Hour or Time.StartOfHour. fnRoundTimestamp in this library may be used to add a more complex column - such as allocating a each co-ordinate to a fifteen minute timeslot.
+After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these from this library - fnRoundTimestamp.
 
 ## fnRoundTimestamp
-*Problem to be Solved*
-1. Solves the problem of readings not being exactly at the datetime they're expected. In the real world the timestamp recorded for a reading often falls on either side of a co-ordinate on the datetime dimension. This “jitter” prevents a relationship being set up between the datetime dimension and the reading. This function rounds a timestamp to a co-ordinate on the datetime dimension. It thereby restores the ability to set up a relationship.
-2. Solves the problem of enriching a temporal dimension by assigning each timestamp to a group (e.g. each fifteen minute interval). While functions like Time.StartOfHour exist there is no function like Time.StartOfFifteenMinutePeriod - this function is a general purpose Time.StartOf.
+*Purpose*
+1. Mitigates the problem of timestamps not being exactly at co-ordinates on the timeline.
+2. Solves the problem of assigning a timestamp to a time interval, generalising functions such Time.StartOfHour.
 
-*Parameters* The function needs to be told the origin of the datetime dimension, the interval between co-ordinates on the dimension, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
+In the real world readings often fall either side of a co-ordinate on the timeline<sup>1</sup>. This function rounds a timestamp to a co-ordinate. Without doing this you could not create a relationship between the co-ordinates on the timeline and the timestamps of the readings. 
+
+Another use is to allocate a timestamp to a time interval - some such functions already exist (e.g. Time.StartOfHour allocates a timestamp to an hour). This function generalises the existing functions. For example you may wish to allocate a timestamp to the start of a fifteen minute period.
+
+<sup>1</sup>This may be due to a fixed difference in reading time between the sensor and co-ordinates on the timeline, or random "jitter" or "drift" in reading times, or a combination of all of these.
+
+*Parameters* The function needs to be told the origin of the timeline, the interval between co-ordinates on the timeline, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
 
 ## MonthLetter
 Solves the problem of month names taking up too much space in a visual.
@@ -66,7 +75,25 @@ Solve the problem of returning a number indicating which week of the month a dat
 
 A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
 
-## SignificantFigures
-Solves the problem of high cardinality in columns of values. This is a common situation in time series data such as sensor readings. High cardinality compromises performance because the data model will be big and DAX calculations will be slower.
+## fnSignificantFigures
+*Purpose*
+Solves the problem of high cardinality in a columns of values.
 
-The function takes a number and rounds it to your choice of significant figures. Where there is a tie between numbers to round to, a third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings. Rounding reduces cardinality.
+
+I have seen examples of readings recorded to 6 figures when only 3 are of significance. Rounding to 3 significant figures would reduce cardinality to a maximum of 1,000 from a maximum of 1,000,000.
+
+*Parameters*
+The function needs to be told the number to round and the number of significant figures to round to. A third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+
+## fnSeasonalAverage
+*Purpose*
+Solves the problem of calculating the average for each season in a time series.
+
+Given a time series of timestamps and reading values (with no gaps in the timestamps column), the function will calculate the average for each season. The output will be a list with each value being a season average.
+
+*Parameters*
+The function needs to be given the values column from the time series and it needs to be told the number of values per season.
+
+*Return*
+The function returns a list of the same length as the values column but each value being a season average.
