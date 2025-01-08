@@ -85,3 +85,15 @@ I have seen examples of readings recorded to 6 figures when only 3 are of signif
 
 *Parameters*
 The function needs to be told the number to round and the number of significant figures to round to. A third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+
+## fnSeasonalAverage
+*Purpose*
+Solves the problem of calculating the average for each season in a time series.
+
+Given a time series of timestamps and reading values (with no gaps in the timestamps column and trend removed from the values), the function will calculate the average for each season. The output will be a list with each value being a season average.
+
+*Parameters*
+The function needs to be given the values column from the time series and it needs to be told the number of values per season.
+
+*Return*
+The function returns a list of the same length as the values column but each value being a season average.
