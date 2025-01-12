@@ -14,10 +14,15 @@ With this function you can easily create the most awkward of timelines. For exam
 
 *Return* The function returns a single-column table of the same type as the `start` parameter. The column title is determined by the type of the `start` parameter.
 
-### MonthLetter
-Solves the problem of month names taking up too much space in a visual.
+### fnMonthLetter
+*Purpose* Solves the problem of month names taking up too much space in a visual.
 
 The function converts a date to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
+
+*Parameters*
+- `timestamp` The timestamp to have its month represented by a single visible letter. The timestamp may be date, datetime or datetimezone.
+
+*Return* The single letter. The return type is text.
 
 ### StartOfWeekNOfMonth
 Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
