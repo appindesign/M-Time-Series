@@ -3,7 +3,7 @@ This is my library of M custom functions for time series data. Each function des
 
 ## Timeline Prepartion
 ### fnTimeline
-*Purpose* Solves the problem of creating a timeline of arbitrary interval, start and duration.
+*Purpose* Simplifies the problem of creating a timeline of arbitrary interval, start and duration.
 
 With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March. The function generalises existing functions such as List.DateTimes.
 
