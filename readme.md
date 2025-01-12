@@ -47,7 +47,7 @@ Another use is to allocate a timestamp to a time interval - some such functions 
 - `interval` The interval between co-ordinates on the timeline.
 - `roundingMode`  The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
 
-*Return* The rounded timestamp.
+*Return* The rounded timestamp as type any (to cater for the different temporal types).
 
 ## Values Preparation
 ### fnSignificantFigures
@@ -65,7 +65,7 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 - `significantFigures` The number of significant digits to round to.
 - `roundingMode` The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
 
-*Return* The rounded value.
+*Return* The rounded value as type number.
 
 ## Values Enrichment
 ### fnSeasonalAverage
@@ -75,7 +75,8 @@ Solves the problem of calculating the average for each season in a time series.
 Given a time series of timestamps and reading values (with no gaps in the timestamps column), the function will calculate the average for each season. The output will be a list with each value being a season average.
 
 *Parameters*
-The function needs to be given the values column from the time series and it needs to be told the number of values per season.
+- `lst` The ordered list of values from the time series.
+- `seasons` The number of values in each seasons.
 
 *Return*
 The function returns a list of the same length as the values column but each value being a season average.
@@ -110,7 +111,8 @@ This is under construction - the bones of the code are here.
 
 Given an ordered list with an even number of items, there is no "centre" item. This presents a problem if you wish to calculate a centred average. A suitable solution starts by creating an odd list, of n+1 items, using the n/2 items before the item, the item itself and the n/2 items after the item. Passing such a list to this function will result in a centred average being calculated as 1/2 x the first item plus 1/2 x the last item plus the sum of the other items, all of this then being divided by n.
 
-*Parameters* A single parameter of an odd list of null numbers is required.
+*Parameters* 
+- `lst` A odd-length list of non-null numbers. The length is n+1 where n is number of items the centred average is to be calculated for.
 
 *Return* A number which is the centred average of the list.
 
