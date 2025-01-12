@@ -46,14 +46,20 @@ Another use is to allocate a timestamp to a time interval - some such functions 
 ## Values Preparation
 ### fnSignificantFigures
 *Purpose*
-Solves the problem of high cardinality in a columns of values.
+Solves the problem of large, unpeformant, datasets.
 
-High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings. Rounding reduces cardinality.
+High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings where the range of readings is high. Rounding reduces cardinality.
 
 I have seen examples of readings recorded to 6 figures when only 3 are of significance. Rounding to 3 significant figures would reduce cardinality to a maximum of 1,000 from a maximum of 1,000,000.
 
+Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+
 *Parameters*
-The function needs to be told the number to round and the number of significant figures to round to. A third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+- `x` The number to be rounded.
+- `significantFigures` The number of significant digits to round to.
+- `roundingMode` The rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
+
+*Return* The rounded value.
 
 ## Values Enrichment
 ### fnSeasonalAverage
