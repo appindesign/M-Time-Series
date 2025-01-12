@@ -41,7 +41,13 @@ Another use is to allocate a timestamp to a time interval - some such functions 
 
 <sup>1</sup>This may be due to a fixed difference in reading time between the sensor and co-ordinates on the timeline, or random "jitter" or "drift" in reading times, or a combination of all of these.
 
-*Parameters* The function needs to be told the origin of the timeline, the interval between co-ordinates on the timeline, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
+*Parameters* 
+- `timestamp` The timestamp to round.
+- `origin` The function needs to be told the origin of the timeline.
+- `interval` The interval between co-ordinates on the timeline.
+- `roundingMode`  The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
+
+*Return* The rounded timestamp.
 
 ## Values Preparation
 ### fnSignificantFigures
@@ -57,7 +63,7 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 *Parameters*
 - `x` The number to be rounded.
 - `significantFigures` The number of significant digits to round to.
-- `roundingMode` The rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
+- `roundingMode` The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
 
 *Return* The rounded value.
 
