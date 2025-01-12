@@ -94,7 +94,17 @@ Solve the problem of missing values in a time series by interpolating from neigh
 
 This is under construction - the bones of the code are here.
 
-## Miscellaneous
+## Utilities
+### fnEvenCentredAverage
+*Purpose* Solves the problem of calculating a centred average for an even number (n) of items.
+
+Given an ordered list with an even number of items, there is no ""centre"" item. This presents a problem if you wish to calculate a centred average. A suitable solution starts by creating an odd list, of n+1 items, using the n/2 items before the item, the item itself and the n/2 items after the item. Passing such a list to this function will result in a centred average being calculated as 1/2*the first item plus 1/2*the last item plus the sum of the other items, all of this then being divided by n.
+
+*Parameters* A single parameter of an odd list of null numbers is required.
+
+*Return* A number which is the centred average of the list.
+
+## Other
 ### DateTimeSafeLocalNow
 Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
 
