@@ -12,9 +12,7 @@ With this function you can easily create the most awkward of timelines. For exam
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
 - `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
-*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. The type of the column is the type of the start parameter.
-
-After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these from this library - fnRoundTimestamp.
+*Return* The function returns a single-column table of the same type as the `start` parameter. The column title is determined by the type of the `start` parameter.
 
 ### MonthLetter
 Solves the problem of month names taking up too much space in a visual.
