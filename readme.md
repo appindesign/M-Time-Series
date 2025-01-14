@@ -121,6 +121,18 @@ Given an ordered list with an even number of items, there is no "centre" item. T
 
 *Return* A number which is the centred average of the list.
 
+### fnTableType
+*Purpose* Solves the problems of 
+1. Getting a table's type.
+2. Getting a table's type if it were extended with additional columns.
+
+*Parameters*
+- `table` The table for which the type is to be found (or to which additional columns are to be added).
+- `additionalNames` A list of the names of the additional columns.
+- `additionalTypes` A list of the types of the additional columns.
+
+*Return* A table type.
+
 ## Other
 ### DateTimeSafeLocalNow
 Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
