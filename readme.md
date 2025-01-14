@@ -3,7 +3,7 @@ This is my library of M custom functions for time series data. Each function des
 
 ## Timeline Prepartion
 ### fnTimeline
-*Purpose* Solves the problem of creating a timeline of arbitrary interval, start and duration.
+*Purpose* Simplifies the problem of creating a timeline of arbitrary interval, start and duration.
 
 With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March. The function generalises existing functions such as List.DateTimes.
 
@@ -12,14 +12,17 @@ With this function you can easily create the most awkward of timelines. For exam
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
 - `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
-*Return* The function returns a single-column table. The column title is determined by the type of the start co-ordinate. The type of the column is the type of the start parameter.
+*Return* The function returns a single-column table of the same type as the `start` parameter. The column title is determined by the type of the `start` parameter.
 
-After creating the table you may enrich it, adding columns using functions such as DateTime.Date, Time.Hour, Time.StartOfHour or the generalised form of these from this library - fnRoundTimestamp.
-
-### MonthLetter
-Solves the problem of month names taking up too much space in a visual.
+### fnMonthLetter
+*Purpose* Solves the problem of month names taking up too much space in a visual.
 
 The function converts a date to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
+
+*Parameters*
+- `timestamp` The timestamp to have its month represented by a single visible letter. The timestamp may be date, datetime or datetimezone.
+
+*Return* The single letter. The return type is text.
 
 ### StartOfWeekNOfMonth
 Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
@@ -43,19 +46,31 @@ Another use is to allocate a timestamp to a time interval - some such functions 
 
 <sup>1</sup>This may be due to a fixed difference in reading time between the sensor and co-ordinates on the timeline, or random "jitter" or "drift" in reading times, or a combination of all of these.
 
-*Parameters* The function needs to be told the origin of the timeline, the interval between co-ordinates on the timeline, the timestamp to round and whether you wish to round up, down or to the nearest co-ordinate. The timestamp and the origin must be of the same type. They may of type time, date, datetime or datetimezone.
+*Parameters* 
+- `timestamp` The timestamp to round.
+- `origin` The function needs to be told the origin of the timeline.
+- `interval` The interval between co-ordinates on the timeline.
+- `roundingMode`  The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
+
+*Return* The rounded timestamp as type any (to cater for the different temporal types).
 
 ## Values Preparation
 ### fnSignificantFigures
 *Purpose*
-Solves the problem of high cardinality in a columns of values.
+Solves the problem of large, unpeformant, datasets.
 
-High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings. Rounding reduces cardinality.
+High cardinality creates a large data model and makes DAX calculations slower. This is a common situation in time series data such as sensor readings where the range of readings is high. Rounding reduces cardinality.
 
 I have seen examples of readings recorded to 6 figures when only 3 are of significance. Rounding to 3 significant figures would reduce cardinality to a maximum of 1,000 from a maximum of 1,000,000.
 
+Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+
 *Parameters*
-The function needs to be told the number to round and the number of significant figures to round to. A third parameter allows you to specify a rounding mode (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)). Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) and [significant figures](https://en.wikipedia.org/wiki/Scientific_notation).
+- `x` The number to be rounded.
+- `significantFigures` The number of significant digits to round to.
+- `roundingMode` The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
+
+*Return* The rounded value as type number.
 
 ## Values Enrichment
 ### fnSeasonalAverage
@@ -65,7 +80,8 @@ Solves the problem of calculating the average for each season in a time series.
 Given a time series of timestamps and reading values (with no gaps in the timestamps column), the function will calculate the average for each season. The output will be a list with each value being a season average.
 
 *Parameters*
-The function needs to be given the values column from the time series and it needs to be told the number of values per season.
+- `lst` The ordered list of values from the time series.
+- `seasons` The number of values in each seasons.
 
 *Return*
 The function returns a list of the same length as the values column but each value being a season average.
@@ -98,9 +114,10 @@ This is under construction - the bones of the code are here.
 ### fnEvenCentredAverage
 *Purpose* Solves the problem of calculating a centred average for an even number (n) of items.
 
-Given an ordered list with an even number of items, there is no ""centre"" item. This presents a problem if you wish to calculate a centred average. A suitable solution starts by creating an odd list, of n+1 items, using the n/2 items before the item, the item itself and the n/2 items after the item. Passing such a list to this function will result in a centred average being calculated as 1/2*the first item plus 1/2*the last item plus the sum of the other items, all of this then being divided by n.
+Given an ordered list with an even number of items, there is no "centre" item. This presents a problem if you wish to calculate a centred average. A suitable solution starts by creating an odd list, of n+1 items, using the n/2 items before the item, the item itself and the n/2 items after the item. Passing such a list to this function will result in a centred average being calculated as 1/2 x the first item plus 1/2 x the last item plus the sum of the other items, all of this then being divided by n.
 
-*Parameters* A single parameter of an odd list of null numbers is required.
+*Parameters* 
+- `lst` A odd-length list of non-null numbers. The length is n+1 where n is number of items the centred average is to be calculated for.
 
 *Return* A number which is the centred average of the list.
 
