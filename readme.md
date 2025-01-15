@@ -24,16 +24,6 @@ The function converts a date to a one letter abbreviation. One, or more, empty c
 
 *Return* The single letter. The return type is text.
 
-### StartOfWeekNOfMonth
-Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
-
-The function returns the start date of the nth week of a month. You can specify the start day of the week (e.g. Monday). You can count from the start of the month or from the end of the month.
-
-### FullWeekOfMonth
-Solve the problem of returning a number indicating which week of the month a date falls in when weeks are numbered from the first full week of the month.
-
-A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
-
 ## Timestamp Preparation
 ### fnRoundTimestamp
 *Purpose*
@@ -86,30 +76,6 @@ Given a time series of timestamps and reading values (with no gaps in the timest
 *Return*
 The function returns a list of the same length as the values column but each value being a season average.
 
-### Differentiate (under construction but working)
-Solve the problem of differentiation.
-
-Supply this function with a table containing a domain and a range and it will add a new column, differenting the range with respect to the domain.
-
-### Integrate (under construction but working)
-Solve the problem of integration.
-
-Supply this function with a table containing a domain and a range and it will add a new column, integrating the range from the origin of the domain to the point on the domain, doing so for each point.
-
-<img width="296" alt="Screenshot 2024-05-20 182249" src="https://github.com/appindesign/M-Time-Series/assets/42817224/9c4ef84d-a906-4ad5-aa57-4bad8672a365">
-
-### SmoothWithOutliers
-Solve the problem of smoothing a time series which contains outliers.
-
-Supply this function with a table containing a time series and it will add a new column, smoothing the values of the time series. It smooths the values by calculating the median of neighbouring points. You may specify the number of neighbours to use.
-
-![smoothing](https://github.com/appindesign/M-Time-Series/assets/42817224/b3b11705-8133-46f2-8ceb-989916752b83)
-
-### LinearInterpolation (under construction)
-Solve the problem of missing values in a time series by interpolating from neighbouring values.
-
-This is under construction - the bones of the code are here.
-
 ## Utilities
 ### fnEvenCentredAverage
 *Purpose* Solves the problem of calculating a centred average for an even number (n) of items.
@@ -146,7 +112,8 @@ The function calls fnTableType to construct the table type of the new table base
 
 *Return* The extended table.
 
-## Other
+## Under Construction
+
 ### DateTimeSafeLocalNow
 Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
 
@@ -154,3 +121,37 @@ Consider you have a table of time-series data, collected in your timezone. You w
 - Age = DateTime.LocalNow() - Readings[Datetime]
 
 All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
+
+### StartOfWeekNOfMonth
+Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
+
+The function returns the start date of the nth week of a month. You can specify the start day of the week (e.g. Monday). You can count from the start of the month or from the end of the month.
+
+### FullWeekOfMonth
+Solve the problem of returning a number indicating which week of the month a date falls in when weeks are numbered from the first full week of the month.
+
+A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
+
+### Differentiate (under construction but working)
+Solve the problem of differentiation.
+
+Supply this function with a table containing a domain and a range and it will add a new column, differenting the range with respect to the domain.
+
+### Integrate (under construction but working)
+Solve the problem of integration.
+
+Supply this function with a table containing a domain and a range and it will add a new column, integrating the range from the origin of the domain to the point on the domain, doing so for each point.
+
+<img width="296" alt="Screenshot 2024-05-20 182249" src="https://github.com/appindesign/M-Time-Series/assets/42817224/9c4ef84d-a906-4ad5-aa57-4bad8672a365">
+
+### SmoothWithOutliers
+Solve the problem of smoothing a time series which contains outliers.
+
+Supply this function with a table containing a time series and it will add a new column, smoothing the values of the time series. It smooths the values by calculating the median of neighbouring points. You may specify the number of neighbours to use.
+
+![smoothing](https://github.com/appindesign/M-Time-Series/assets/42817224/b3b11705-8133-46f2-8ceb-989916752b83)
+
+### LinearInterpolation (under construction)
+Solve the problem of missing values in a time series by interpolating from neighbouring values.
+
+This is under construction - the bones of the code are here.
