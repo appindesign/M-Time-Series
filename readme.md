@@ -64,7 +64,7 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 
 ## Values Enrichment
 ### fnWindowCalculation
-*Purpose* Solves the problem of calculating fast over a moving window, for example moving means.
+*Purpose* Solves the problem of calculating, fast, over a moving window, for example moving means.
 
 *Parameters*
 - `lst` The list over which the calculation is to be executed.
