@@ -63,6 +63,17 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 *Return* The rounded value as type number.
 
 ## Values Enrichment
+## fnWindowCalculation
+*Purpose* Solves the problem of calculating fast over a moving window, for example moving means.
+
+*Parameters*
+- `lst` The list over which the calculation is to be executed.
+- `before` The number of items to be included before the current list position.
+- `after` The number of items to be included after the current list position.
+- `calculation` The function to be evaluated over each window.
+
+*Return* A list with the result of the calculation for each window.
+
 ### fnSeasonalAverage
 *Purpose*
 Solves the problem of calculating the average for each season in a time series.
