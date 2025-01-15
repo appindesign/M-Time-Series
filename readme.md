@@ -63,7 +63,7 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 *Return* The rounded value as type number.
 
 ## Values Enrichment
-## fnWindowCalculation
+### fnWindowCalculation
 *Purpose* Solves the problem of calculating fast over a moving window, for example moving means.
 
 *Parameters*
