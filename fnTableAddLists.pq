@@ -1,8 +1,8 @@
 let
-    fn = (tbl as table, lists as list, types as list, headers as list) as table =>
+    fn = (tbl as table, lists as list, names as list, types as list) as table =>
         let
             lists = Table.ToColumns(tbl) & lists,
-            tblTypes = fnTableType(tbl, headers, types),
+            tblTypes = fnTableType(tbl, names, types),
             combined = Table.FromColumns(lists, tblTypes)
         in
             combined,
@@ -27,6 +27,16 @@ let
                 Documentation.IsMultiline = false,
                 Documentation.IsCode = false
             ]
+        ),        
+        names as (
+            type list meta [
+                Documentation.FieldCaption = "names",
+                Documentation.FieldDescription = "The names of the columns to be added to the table.",
+                //Documentation.SampleValues = {4},
+                //Documentation.AllowedValues = {},
+                Documentation.IsMultiline = false,
+                Documentation.IsCode = false
+            ]
         ),
         types as (
             type list meta [
@@ -37,17 +47,7 @@ let
                 Documentation.IsMultiline = false,
                 Documentation.IsCode = false
             ]
-        ),        
-        headers as (
-            type list meta [
-                Documentation.FieldCaption = "headers",
-                Documentation.FieldDescription = "The names of the columns to be added to the table.",
-                //Documentation.SampleValues = {4},
-                //Documentation.AllowedValues = {},
-                Documentation.IsMultiline = false,
-                Documentation.IsCode = false
-            ]
-        )        
+        )       
     ) as table meta [
         Documentation.Name = "fnTableAddLists",
         Documentation.LongDescription = "Add columns named ""Cloud cover"" and ""Precipitation"" to the table using a list of cloud cover descriptions and a list of precipitation figures.",
@@ -60,15 +60,15 @@ let
         [Day = ""Tuesday"", Temperature = 5],
         [Day = ""Wednesday"", Temperature = 6]
     }),
-    {{""Sunny"",""Dull"",""Cloudy""},{""0mm"", ""1mm"", ""1.5mm""}},
-    { Text.Type, Text.Type },
-    {""Cloud cover"", ""Precipitation""}
+    {{""Sunny"",""Dull"",""Cloudy""},{0, 1, 1.5}},
+    {""Cloud cover"", ""Precipitation""},
+    { Text.Type, Number.Type }
 )",
             Result = 
 "Table.FromRecords({
-    [Day = ""Monday"", Temperature = 4, Cloud cover = ""Sunny"", Precipitation = ""0mm""],
-    [Day = ""Tuesday"", Temperature = 5, Cloud cover = ""Dull"", Precipitation = ""1mm""],
-    [Day = ""Wednesday"", Temperature = 6, Cloud cover = ""Cloudy"", Precipitation = ""1.5mm""]
+    [Day = ""Monday"", Temperature = 4, Cloud cover = ""Sunny"", Precipitation = 0],
+    [Day = ""Tuesday"", Temperature = 5, Cloud cover = ""Dull"", Precipitation = 1],
+    [Day = ""Wednesday"", Temperature = 6, Cloud cover = ""Cloudy"", Precipitation = 1.5]
 })"
         ]}
     ]

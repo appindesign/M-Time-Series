@@ -133,6 +133,19 @@ Given an ordered list with an even number of items, there is no "centre" item. T
 
 *Return* A table type.
 
+### fnTableAddLists
+*Purpose* Solves the problem of adding to a table lists as new columns.
+
+*Parameters*
+- `tbl` The table to which the lists are to be added.
+- `lists` The lists.
+- `names` The names of the new columns.
+- `types` The types of the new columns.
+
+The function calls fnTableType to construct the table type of the new table based on the table type of tbl and the types of the new columns.
+
+*Return* The extended table.
+
 ## Other
 ### DateTimeSafeLocalNow
 Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
