@@ -25,8 +25,8 @@ let
         dateTime as (
             type any meta [
                 Documentation.FieldCaption = "dateTime",
-                Documentation.FieldDescription = "Numerator",
-                Documentation.SampleValues = {10},
+                Documentation.FieldDescription = "date, dateTime or dateTimeZone",
+                //Documentation.SampleValues = {10},
                 //Documentation.AllowedValues = {},
                 Documentation.IsMultiline = false,
                 Documentation.IsCode = false
