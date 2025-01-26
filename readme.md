@@ -24,6 +24,16 @@ A month name may be too long for a column or row heading. The shortest replaceme
 
 *Return* The single letter. The return type is text.
 
+### fnD
+*Purpose* Solves the problem of representing a day name by a single letter.
+
+A day name may be too long for a column or row heading. The shortest replacement would be a single character. However, some days share the same first character. This functions adds enough empty characters to the first character to distinguish each day.
+
+*Parameters*
+- `dateTime` The dateTime to be represented by a single letter for its day. The dateTime may be of type date, datetime or datetimezone.
+
+*Return* The single letter. The return type is text.
+
 ## Timestamp Preparation
 ### fnRoundTimestamp
 *Purpose*
