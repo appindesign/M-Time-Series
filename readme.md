@@ -14,13 +14,13 @@ With this function you can easily create the most awkward of timelines. For exam
 
 *Return* The function returns a single-column table of the same type as the `start` parameter. The column title is determined by the type of the `start` parameter.
 
-### fnMonthLetter
-*Purpose* Solves the problem of month names taking up too much space in a visual.
+### fnM
+*Purpose* Solves the problem of representing a month name by a single letter.
 
-The function converts a date to a one letter abbreviation. One, or more, empty characters are added if a month shares its first character with another month.
+A month name may be too long for a column or row heading. The shortest replacement would be a single character. However, some months share the same first character. This functions adds enough empty characters to the first character to distinguish each month.
 
 *Parameters*
-- `timestamp` The timestamp to have its month represented by a single visible letter. The timestamp may be date, datetime or datetimezone.
+- `dateTime` The dateTime to be represented by a single letter for its month. The dateTime may be of type date, datetime or datetimezone.
 
 *Return* The single letter. The return type is text.
 
@@ -88,16 +88,6 @@ Given a time series of timestamps and reading values (with no gaps in the timest
 The function returns a list of the same length as the values column but each value being a season average.
 
 ## Utilities
-### fnEvenCentredAverage
-*Purpose* Solves the problem of calculating a centred average for an even number (n) of items.
-
-Given an ordered list with an even number of items, there is no "centre" item. This presents a problem if you wish to calculate a centred average. A suitable solution starts by creating an odd list, of n+1 items, using the n/2 items before the item, the item itself and the n/2 items after the item. Passing such a list to this function will result in a centred average being calculated as 1/2 x the first item plus 1/2 x the last item plus the sum of the other items, all of this then being divided by n.
-
-*Parameters* 
-- `lst` A odd-length list of non-null numbers. The length is n+1 where n is number of items the centred average is to be calculated for.
-
-*Return* A number which is the centred average of the list.
-
 ### fnTableType
 *Purpose* Solves the problems of 
 1. Getting a table's type.
