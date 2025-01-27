@@ -1,6 +1,6 @@
 let
     //Function defintion
-    fn = (d as any, n as number, firstDayOfWeek as number) as any =>
+    fn = (d as any, n as number, day as number) as any =>
         let
             /*If n is +ve 
               then find the end of the 7-day block before the start of the month,
@@ -11,7 +11,7 @@ let
                 else
                     Date.AddDays(Date.EndOfMonth(d), 7),
             //Find the start of the week in the 7 day block.
-            startOfWeek0 = Date.StartOfWeek(sevenDaysEnd, firstDayOfWeek),
+            startOfWeek0 = Date.StartOfWeek(sevenDaysEnd, day),
             //Offset by n weeks.
             nthOccurence = Date.AddWeeks(startOfWeek0, n)
         in
@@ -34,12 +34,12 @@ let
 
             ]
         ),
-        firstDayOfWeek as (
+        day as (
             type number meta [
-                Documentation.FieldCaption = "firstDayOfWeek, 0 is Sunday.",
+                Documentation.FieldCaption = "day, 0 is Sunday.",
                 Documentation.FieldDescription = "Day the week starts on.",
-                Documentation.SampleValues = {0, 1},
-                Documentation.AllowedValues = {0, 1, 2, 3, 4, 5, 6}
+                Documentation.SampleValues = {Day.Friday},
+                Documentation.AllowedValues = {Day.Sunday, Day.Monday, Day.Tuesday, Day.Wednesday, Day.Thursday, Day.Friday, Day.Saturday}
             ]
         )
     ) as any meta [
