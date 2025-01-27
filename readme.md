@@ -47,7 +47,7 @@ A date falling in the month but before the first full week is numbered as if it 
 *Return* The week number.
 
 ### fnNthDaynameOfMonth
-*Purpose* Solves the problme of finding the date of the Nth occurence of a day name in a Month.
+*Purpose* Solves the problem of finding the date of the Nth occurence of a day name in a Month.
 
 This function can solve problems like finding the first Monday of the month or the 2nd Thursday. It can also count from the end of the month and find dates like the last Friday of a month.
 
