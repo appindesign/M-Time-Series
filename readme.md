@@ -1,5 +1,5 @@
 # M Functions for Time Series
-This is my library of M custom functions for time series data. Each function description describes the problem the function solves.
+This is my library of M custom functions for time series data. Each function description describes the problem the function solves, its parameters and the value it returns.
 
 ## Timeline Prepartion
 ### fnTimeline
@@ -14,6 +14,7 @@ With this function you can easily create the most awkward of timelines. For exam
 
 *Return* The function returns a single-column table of the same type as the `start` parameter. The column title is determined by the type of the `start` parameter.
 
+## Timeline and Timestamp Enrichment
 ### fnM
 *Purpose* Solves the problem of representing a month name by a single letter.
 
@@ -33,6 +34,17 @@ A day name may be too long for a column or row heading. The shortest replacement
 - `dateTime` The dateTime to be represented by a single letter for its day. The dateTime may be of type date, datetime or datetimezone.
 
 *Return* The single letter. The return type is text.
+
+### fnFullWeekOfMonth
+*Purpose* Solves the problem of finding the week number of the month a date lies in, when weeks are numbered from the first full week of the month.
+
+A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
+
+*Parameters*
+- <code>dateTime</code>The date for which the week number is to be found. The type may be date, datetime or datetimezone.
+- <code>firstDayOfWeek</code>The day weeks are considered to start on, e.g. Day.Sunday.
+
+*Return* The week number.
 
 ## Timestamp Preparation
 ### fnRoundTimestamp
@@ -138,10 +150,7 @@ Solve problems like finding the first Monday of the month, the 2nd Thursday or t
 
 The function returns the start date of the nth week of a month. You can specify the start day of the week (e.g. Monday). You can count from the start of the month or from the end of the month.
 
-### FullWeekOfMonth
-Solve the problem of returning a number indicating which week of the month a date falls in when weeks are numbered from the first full week of the month.
 
-A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
 
 ### LinearInterpolation (under construction)
 Solve the problem of missing values in a time series by interpolating from neighbouring values.
