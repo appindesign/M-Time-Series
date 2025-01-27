@@ -39,7 +39,7 @@ let
             ]
         )
     ) as number meta [
-        Documentation.Name = "FullWeekOfMonth",
+        Documentation.Name = "fnFullWeekOfMonth",
         Documentation.LongDescription = "Returns a number indicating which full week of month a date falls in. 
         Weeks are numbered starting with the first full week of the month (unlike Date.WeekOfMonth).
         If the date falls before the first full week of the month it is numbered as if it were the last week of the previous month.
