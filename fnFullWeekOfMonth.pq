@@ -39,7 +39,7 @@ let
             ]
         )
     ) as number meta [
-        Documentation.Name = "fnFullWeekOfMonth",
+        Documentation.Name = "fnFullweekNoOfMonth",
         Documentation.LongDescription = "Returns a number indicating which full week of month a date falls in. 
         Weeks are numbered starting with the first full week of the month (unlike Date.WeekOfMonth).
         If the date falls before the first full week of the month it is numbered as if it were the last week of the previous month.
@@ -47,12 +47,12 @@ let
         Documentation.Examples = {
             [
                 Description = "Calculate the week number of Monday the 5th of February 2023, where weeks start on Monday",
-                Code = "MonthWeekN( #date(2023,2,5), Day.Monday ) ",
+                Code = "fnFullweekNoOfMonth( #date(2023,2,5), Day.Monday ) ",
                 Result = "1"
             ],
             [
                 Description = "Calculate the week number of Sunday the 4th of February 2023, where weeks start on Monday",
-                Code = "MonthWeekN( #date(2023,2,4), Day.Monday ) ",
+                Code = "fnFullweekNoOfMonth( #date(2023,2,4), Day.Monday ) ",
                 Result = "5"
             ]
         }
