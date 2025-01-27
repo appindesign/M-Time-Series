@@ -41,10 +41,22 @@ A day name may be too long for a column or row heading. The shortest replacement
 A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
 
 *Parameters*
-- <code>dateTime</code>The date for which the week number is to be found. The type may be date, datetime or datetimezone.
-- <code>firstDayOfWeek</code>The day weeks are considered to start on, e.g. Day.Sunday.
+- 'dateTime' The date for which the week number is to be found. The type may be date, datetime or datetimezone.
+- 'firstDayOfWeek' The day weeks are considered to start on, e.g. Day.Sunday.
 
 *Return* The week number.
+
+### fnNthDaynameOfMonth
+*Purpose* Solves the problme of finding the date of the Nth occurence of a day name in a Month.
+
+This function can solve problems like finding the first Monday of the month or the 2nd Thursday. It can also count from the end of the month and find dates like the last Friday of a month.
+
+*Parameters*
+- 'dateTime' A date in the month. dateTime may be of type date, datetime or datetimezone.
+- 'n' The occurence of the day to find. If n is positive the function counts from the start of the month. If n is negative the function counts from the end of the month.
+- 'day' The day you wish to find the occurence of e.g. Day.Friday.
+
+*Return* The date of the nth occurence of the day.
 
 ## Timestamp Preparation
 ### fnRoundTimestamp
@@ -144,13 +156,6 @@ Consider you have a table of time-series data, collected in your timezone. You w
 - Age = DateTime.LocalNow() - Readings[Datetime]
 
 All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
-
-### StartOfWeekNOfMonth
-Solve problems like finding the first Monday of the month, the 2nd Thursday or the last Friday.
-
-The function returns the start date of the nth week of a month. You can specify the start day of the week (e.g. Monday). You can count from the start of the month or from the end of the month.
-
-
 
 ### LinearInterpolation (under construction)
 Solve the problem of missing values in a time series by interpolating from neighbouring values.
