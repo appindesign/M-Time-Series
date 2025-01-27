@@ -1,6 +1,6 @@
 let
     //Function defintion
-    fn = (d as date, n as number, firstDayOfWeek as number) as date =>
+    fn = (d as any, n as number, firstDayOfWeek as number) as any =>
         let
             /*If n is +ve 
               then find the end of the 7-day block before the start of the month,
@@ -19,7 +19,7 @@ let
     //Function type definition
     fnType = type function (
         d as (
-            type date meta [
+            type any meta [
                 Documentation.FieldCaption = "d",
                 Documentation.FieldDescription = "Any date in the month.",
                 Documentation.SampleValues = {#date(2023, 12, 25)}
@@ -42,20 +42,20 @@ let
                 Documentation.AllowedValues = {0, 1, 2, 3, 4, 5, 6}
             ]
         )
-    ) as date meta [
-        Documentation.Name = "StartOfWeekNOfMonth",
+    ) as any meta [
+        Documentation.Name = "fnNthDaynameOfMonth",
         Documentation.LongDescription = "Find the start date of the nth week of the month.
         If n is positive, count weeks from the start of the month.
         Otherwise, count weeks from the end of the month.",
         Documentation.Examples = {
             [
-                Description = "Find the 2nd Monday of the month",
-                Code = "StartOfWeekNOfMonth( #date(2023,12,25), 2, 1 ) ",
-                Result = "#date(2023, 11, 10)"
+                Description = "Find the 2nd Friday of the month",
+                Code = "fnNthDaynameOfMonth( #date(2023,12,25), 2, Day.Friday ) ",
+                Result = "#date(2023, 12, 8)"
             ],
             [
                 Description = "Find the last Friday of the month",
-                Code = "StartOfWeekNOfMonth( #date(2023,12,25), -1, 5 ) ",
+                Code = "fnNthDaynameOfMonth( #date(2023,12,25), -1, Day.Friday ) ",
                 Result = "#date(2023, 12, 29)"
             ]
         }
