@@ -35,7 +35,7 @@ A day name may be too long for a column or row heading. The shortest replacement
 
 *Return* The single letter. The return type is text.
 
-### fnFullWeekOfMonth
+### fnFullweekNoOfMonth
 *Purpose* Solves the problem of finding the week number of the month a date lies in, when weeks are numbered from the first full week of the month.
 
 A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
