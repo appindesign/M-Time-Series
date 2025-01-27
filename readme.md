@@ -41,8 +41,8 @@ A day name may be too long for a column or row heading. The shortest replacement
 A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
 
 *Parameters*
-- 'dateTime' The date for which the week number is to be found. The type may be date, datetime or datetimezone.
-- 'firstDayOfWeek' The day weeks are considered to start on, e.g. Day.Sunday.
+- `dateTime` The date for which the week number is to be found. The type may be date, datetime or datetimezone.
+- `firstDayOfWeek` The day weeks are considered to start on, e.g. Day.Sunday.
 
 *Return* The week number.
 
@@ -52,9 +52,9 @@ A date falling in the month but before the first full week is numbered as if it 
 This function can solve problems like finding the first Monday of the month or the 2nd Thursday. It can also count from the end of the month and find dates like the last Friday of a month.
 
 *Parameters*
-- 'dateTime' A date in the month. dateTime may be of type date, datetime or datetimezone.
-- 'n' The occurence of the day to find. If n is positive the function counts from the start of the month. If n is negative the function counts from the end of the month.
-- 'day' The day you wish to find the occurence of e.g. Day.Friday.
+- `dateTime` A date in the month. dateTime may be of type date, datetime or datetimezone.
+- `n` The occurence of the day to find. If n is positive the function counts from the start of the month. If n is negative the function counts from the end of the month.
+- `day` The day you wish to find the occurence of e.g. Day.Friday.
 
 *Return* The date of the nth occurence of the day.
 
