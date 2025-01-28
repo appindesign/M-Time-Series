@@ -146,9 +146,3 @@ The function returns a list of the same length as the values column but each val
 The function calls fnTableType to construct the table type of the new table based on the table type of tbl and the types of the new columns.
 
 *Return* The extended table.
-
-## Under Construction
-### LinearInterpolation (under construction)
-Solve the problem of missing values in a time series by interpolating from neighbouring values.
-
-This is under construction - the bones of the code are here.
