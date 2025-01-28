@@ -35,26 +35,26 @@ A day name may be too long for a column or row heading. The shortest replacement
 
 *Return* The single letter. The return type is text.
 
-### fnFullWeekOfMonth
+### fnFullweekNoOfMonth
 *Purpose* Solves the problem of finding the week number of the month a date lies in, when weeks are numbered from the first full week of the month.
 
 A date falling in the month but before the first full week is numbered as if it were the last week in the previous month.
 
 *Parameters*
-- 'dateTime' The date for which the week number is to be found. The type may be date, datetime or datetimezone.
-- 'firstDayOfWeek' The day weeks are considered to start on, e.g. Day.Sunday.
+- `dateTime` The date for which the week number is to be found. The type may be date, datetime or datetimezone.
+- `firstDayOfWeek` The day weeks are considered to start on, e.g. Day.Sunday.
 
 *Return* The week number.
 
 ### fnNthDaynameOfMonth
-*Purpose* Solves the problme of finding the date of the Nth occurence of a day name in a Month.
+*Purpose* Solves the problem of finding the date of the Nth occurence of a day name in a Month.
 
 This function can solve problems like finding the first Monday of the month or the 2nd Thursday. It can also count from the end of the month and find dates like the last Friday of a month.
 
 *Parameters*
-- 'dateTime' A date in the month. dateTime may be of type date, datetime or datetimezone.
-- 'n' The occurence of the day to find. If n is positive the function counts from the start of the month. If n is negative the function counts from the end of the month.
-- 'day' The day you wish to find the occurence of e.g. Day.Friday.
+- `dateTime` A date in the month. dateTime may be of type date, datetime or datetimezone.
+- `n` The occurence of the day to find. If n is positive the function counts from the start of the month. If n is negative the function counts from the end of the month.
+- `day` The day you wish to find the occurence of e.g. Day.Friday.
 
 *Return* The date of the nth occurence of the day.
 
