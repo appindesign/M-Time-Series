@@ -148,15 +148,6 @@ The function calls fnTableType to construct the table type of the new table base
 *Return* The extended table.
 
 ## Under Construction
-
-### DateTimeSafeLocalNow
-Solve the problem of LocalNow being different in the Power BI Service from the source of your data.
-
-Consider you have a table of time-series data, collected in your timezone. You want to calculate the age of each reading and so you try a calculation,
-- Age = DateTime.LocalNow() - Readings[Datetime]
-
-All works well. Then you publish to the Power BI Service, in a different timezone. For the Service, DateTime.LocalNow() is different from your desktop. Your calculation gives the wrong age. The purpose of this function is to give a Local Now which is always in the same time zone. It reaches out to an api to do so. The api is the [world time api]( https://worldtimeapi.org/) and the timezones are defined by area, location, region as can be found [here](https://worldtimeapi.org/timezones).
-
 ### LinearInterpolation (under construction)
 Solve the problem of missing values in a time series by interpolating from neighbouring values.
 
