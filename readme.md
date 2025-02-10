@@ -12,7 +12,7 @@ With this function you can easily create the most awkward of timelines. For exam
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
 - `end` Finally, it needs to be told the number of co-ordinates to include. The number of co-ordinates is given directly as a number, or by giving the last co-ordinate to include. The option to give the last co-ordinate makes this function a generalisation of the List.x functions (e.g. List.DateTimes) - they only support giving a number.
 
-*Return* The function returns a single-column table of the same type as the `start` parameter. The column title is determined by the type of the `start` parameter.
+*Return* The function returns a single-column table. The column type is the type of the `start` parameter. The column title is the type of the `start` parameter.
 
 ## Timeline and Timestamp Enrichment
 ### fnM
@@ -23,7 +23,7 @@ A month name may be too long for a column or row heading. The shortest replaceme
 *Parameters*
 - `dateTime` The dateTime to be represented by a single letter for its month. The dateTime may be of type date, datetime or datetimezone.
 
-*Return* The single letter. The return type is text.
+*Return* The furnction returns a single visible letter (plus empty characters as required to distinguish it from months starting with the same letter). The return type is text.
 
 ### fnD
 *Purpose* Solves the problem of representing a day name by a single letter.
@@ -33,7 +33,7 @@ A day name may be too long for a column or row heading. The shortest replacement
 *Parameters*
 - `dateTime` The dateTime to be represented by a single letter for its day. The dateTime may be of type date, datetime or datetimezone.
 
-*Return* The single letter. The return type is text.
+*Return* The furnction returns a single visible letter (plus empty characters as required to distinguish it from days starting with the same letter). The return type is text.
 
 ### fnFullweekNoOfMonth
 *Purpose* Solves the problem of finding the week number of the month a date lies in, when weeks are numbered from the first full week of the month.
@@ -44,7 +44,7 @@ A date falling in the month but before the first full week is numbered as if it 
 - `dateTime` The date for which the week number is to be found. The type may be date, datetime or datetimezone.
 - `firstDayOfWeek` The day weeks are considered to start on, e.g. Day.Sunday.
 
-*Return* The week number.
+*Return* The function returns the week number as type number.
 
 ### fnNthDaynameOfMonth
 *Purpose* Solves the problem of finding the date of the Nth occurence of a day name in a Month.
@@ -56,7 +56,7 @@ This function can solve problems like finding the first Monday of the month or t
 - `n` The occurence of the day to find. If n is positive the function counts from the start of the month. If n is negative the function counts from the end of the month.
 - `day` The day you wish to find the occurence of e.g. Day.Friday.
 
-*Return* The date of the nth occurence of the day.
+*Return* The function returns the date of the nth occurence of `day` as type date, datetime or datetimezone.
 
 ## Timestamp Preparation
 ### fnRoundTimestamp
@@ -76,7 +76,7 @@ Another use is to allocate a timestamp to a time interval - some such functions 
 - `interval` The interval between co-ordinates on the timeline.
 - `roundingMode`  The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
 
-*Return* The rounded timestamp as type any (to cater for the different temporal types).
+*Return* The function returns the rounded timestamp as type date, datetime or datetimezone.
 
 ## Values Preparation
 ### fnSignificantFigures
@@ -94,7 +94,7 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 - `significantFigures` The number of significant digits to round to.
 - `roundingMode` The rounding mode - up, down or nearest (as described in Microsoft Learn, [RoundingMode.Type](https://learn.microsoft.com/en-us/powerquery-m/roundingmode-type)).
 
-*Return* The rounded value as type number.
+*Return* The function returns the rounded value of `x` as type number.
 
 ## Values Enrichment
 ### fnWindowCalculation
@@ -106,7 +106,7 @@ Wikipedia has descriptions of [scientific notation](https://en.wikipedia.org/wik
 - `after` The number of items to be included after the current list position.
 - `calculation` The function to be evaluated over each window.
 
-*Return* A list with the result of the calculation for each window.
+*Return* The function returns a list with the result of the calculation for each window. The return type is list.
 
 ### fnSeasonalAverage
 *Purpose*
@@ -119,7 +119,7 @@ Given a time series of timestamps and reading values (with no gaps in the timest
 - `seasons` The number of values in each seasons.
 
 *Return*
-The function returns a list of the same length as the values column but each value being a season average.
+The function returns a list of the same length as the values column but each value being a season average. The return type is list.
 
 ## Utilities
 ### fnTableType
@@ -132,7 +132,7 @@ The function returns a list of the same length as the values column but each val
 - `additionalNames` A list of the names of the additional columns.
 - `additionalTypes` A list of the types of the additional columns.
 
-*Return* A table type.
+*Return* The function returns the table type of `table` as a table type.
 
 ### fnTableAddLists
 *Purpose* Solves the problem of adding to a table lists as new columns.
@@ -145,4 +145,4 @@ The function returns a list of the same length as the values column but each val
 
 The function calls fnTableType to construct the table type of the new table based on the table type of tbl and the types of the new columns.
 
-*Return* The extended table.
+*Return* The function returns `tbl` extended with a column for each list. The extended columns take the types specified in `types`.
