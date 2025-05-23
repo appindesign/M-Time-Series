@@ -146,3 +146,11 @@ The function returns a list of the same length as the values column but each val
 The function calls fnTableType to construct the table type of the new table based on the table type of tbl and the types of the new columns.
 
 *Return* The function returns `tbl` extended with a column for each list. The extended columns take the types specified in `types`.
+
+### fnOrdinalSuffix
+*Purpose* Solves the problem of adding a suffix to a number to make it ordinal. For example 1 -> 1st, 12 -> 12th.
+
+*Parameters*
+- 'num' The number to be given the suffix. Must be an integer greater than or equal to zero.
+
+*Return" The function returns 'num' with an ordinal suffix added.
