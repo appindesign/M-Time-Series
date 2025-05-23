@@ -153,4 +153,4 @@ The function calls fnTableType to construct the table type of the new table base
 *Parameters*
 - 'num' The number to be given the suffix. Must be an integer greater than or equal to zero.
 
-*Return" The function returns 'num' with an ordinal suffix added.
+*Return* The function returns 'num' with an ordinal suffix added.
