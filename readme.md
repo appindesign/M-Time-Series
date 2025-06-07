@@ -151,6 +151,6 @@ The function calls fnTableType to construct the table type of the new table base
 *Purpose* Solves the problem of adding a suffix to a number to make it ordinal. For example 1 -> 1st, 12 -> 12th.
 
 *Parameters*
-- 'num' The number to be given the suffix. Must be an integer greater than or equal to zero.
+- `num` The number to be given the suffix. Must be an integer greater than or equal to zero.
 
 *Return* The function returns 'num' with an ordinal suffix added.

@@ -50,7 +50,7 @@ let
         )       
     ) as table meta [
         Documentation.Name = "fnTableAddLists",
-        Documentation.LongDescription = "Add columns named ""Cloud cover"" and ""Precipitation"" to the table using a list of cloud cover descriptions and a list of precipitation figures.",
+        Documentation.LongDescription = "Add new columns to a table using lists for the new columns",
         Documentation.Examples = {[
             Description = "",
             Code = 
