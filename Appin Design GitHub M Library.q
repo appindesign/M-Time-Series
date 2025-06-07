@@ -1,4 +1,5 @@
 // Appin Design GitHub Library
+// Credit to https://www.linkedin.com/pulse/using-power-queries-directly-from-github-repository-van-der-vorst-wm6pe/
 let
     helperFunction = 
         let
