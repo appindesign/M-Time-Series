@@ -2,10 +2,10 @@ let
     //Function definition
     fn = (dt as any, month as number, day as number) as any =>
         let
-            thisYearFYStart = Date.AddDays(Date.AddMonths(Date.StartOfYear(dt), month-1), day-1),
-            startOfFY = if dt < thisYearFYStart then Date.AddYears(thisYearFYStart, -1) else thisYearFYStart
+            inYearStart = Date.AddDays(Date.AddMonths(Date.StartOfYear(dt), month-1), day-1),
+            startOfYear = if dt < inYearStart then Date.AddYears(inYearStart, -1) else inYearStart
         in
-            startOfFY,
+            startOfYear,
     //Function type definition
     fnType = type function (
         dt as (type any meta [
