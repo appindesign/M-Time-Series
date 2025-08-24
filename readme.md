@@ -155,12 +155,12 @@ The function calls fnTableType to construct the table type of the new table base
 
 *Return* The function returns 'num' with an ordinal suffix added.
 
-### fnStartOfFY
-*Purpose* Solves the problem of finding the start of a timestamp's financial year, given the financial year starts on `month` and `day`.
+### fnStartOfYear
+*Purpose* Solves the problem of finding the start of a year, given the year starts on `month` and `day`. This enables you to find either the start of the calendar year or the start of a financial year or a reporting year. 
 
 *Parameters*
-- `datetime` The date for which you wish to find the start of the financial year. dateTime may be of type date, datetime or datetimezone.
-- `month` The calander month number of the start of the financial year.
-- `day` The day number of the start of the financial year.
+- `datetime` The date for which you wish to find the start of the year. dateTime may be of type date, datetime or datetimezone.
+- `month` The calander month number of the start of the year.
+- `day` The day number of the start of the year.
 
-*Return* The function returns the start of `datetime`'s financial year. The returned value is the same type as `datetime`.
+*Return* The function returns the start of `datetime`'s year. The returned value is the same type as `datetime`.

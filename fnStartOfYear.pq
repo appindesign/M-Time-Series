@@ -33,11 +33,11 @@ let
             //Documentation.IsCode = false
         ])
     ) as number meta [
-        Documentation.Name = "fnStartOfFY",
-        Documentation.LongDescription = "Finds the start of the current financial year, where the financial year starts on ""month"" and ""day""",
+        Documentation.Name = "fnStartOfYear",
+        Documentation.LongDescription = "Finds the start of the current year, where the year starts on ""month"" and ""day""",
         Documentation.Examples = {[
-            Description = "Find the start of the current financial year if the date is 3rd Jun 2025 and the financial year starts on 30th Sep.",
-            Code = "fnStartOfFY(#date(2025,6,3), 9, 30",
+            Description = "Find the start of the current year if the date is 3rd Jun 2025 and the year starts on 30th Sep.",
+            Code = "fnStartOfYear(#date(2025,6,3), 9, 30",
             Result = "#date(2024,9,30)"
         ]}
     ]
