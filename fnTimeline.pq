@@ -5,12 +5,29 @@ let
             startType = Value.Type(start),
             endType = Value.Type(end),
             //Acknowledgement for the idea of next line to fnType2Text at https://stackoverflow.com/questions/73946747/powerquery-how-to-convert-cast-type-type-to-type-text
-            columnTitle = Text.Proper(Table.Schema(#table(type table [col = startType], {}))[Kind]{0}),
+            startTypeText = Text.Proper(Table.Schema(#table(type table [col = startType], {}))[Kind]{0}),
             count = if (endType = Number.Type) then end else 1 + Number.RoundDown((end - start) / interval),
             lst = List.DateTimeZones(DateTimeZone.From(start), count, interval),
             tbl = Table.FromList(lst, Splitter.SplitByNothing(), type table [Timestamp = startType]),
-            typedTbl = Table.TransformColumnTypes(tbl, {{"Timestamp", startType}}),
-            titledTbl = Table.RenameColumns(typedTbl, {{"Timestamp", columnTitle}})
+            typedTbl = Table.TransformColumns(
+                tbl,
+                {
+                    {
+                        "Timestamp",
+                        each
+                            Record.Field(
+                                [
+                                    Date = DateTime.Date(DateTimeZone.RemoveZone(_)),
+                                    Datetime = DateTimeZone.RemoveZone(_),
+                                    Datetimezone = _
+                                ],
+                                startTypeText
+                            ),
+                        startType
+                    }
+                }
+            ),
+            titledTbl = Table.RenameColumns(typedTbl, {{"Timestamp", startTypeText}})
         in
             titledTbl,
     //Function type definition in p
