@@ -7,6 +7,8 @@ This is my library of M custom functions for time series data. Each function des
 
 With this function you can easily create the most awkward of timelines. For example, a timeline starting at 3 minutes and 34 seconds after 1am on the 3rd of March 2020, with an interval of 7 minutes and 30 seconds and continuing until the end of March. The function generalises existing functions such as List.DateTimes.
 
+NOTE The function neither duplicates nor misses any timeslots on days when the clock moves forward or back. If you should wish to have missing/duplicate slots call the function with a datetimezone type for the `start` parameter and then convert the column to datetime.
+
 *Parameters* 
 - `start` The function needs to be told the start of the timeline. The type of  start determines the type of the timeline. The type may be time, date, datetime or datetimezone.
 - `interval` The function needs to be told the duration of the interval between co-ordinates. 
