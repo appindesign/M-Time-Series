@@ -1,5 +1,5 @@
 # M Functions for Time Series
-This is my library of M custom functions for time series data. Each function description describes the problem the function solves, its parameters and the value it returns.
+This is my library of M custom functions for time series data. The description for each function relates the problem the function solves, describes each parameter and describes the value the function returns.
 
 ## Timeline Prepartion
 ### fnTimeline
